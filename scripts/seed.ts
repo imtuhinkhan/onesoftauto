@@ -56,8 +56,8 @@ async function seed() {
     siteName: "Onesoftauto",
     tagline: "Premium Software Development",
     email: "hello@onesoftauto.com",
-    phone: "+1 (555) 123-4567",
-    address: "100 Market St, San Francisco, CA 94105",
+    phone: "",
+    address: "Dhaka, Bangladesh",
     calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
     stats: agencyStats,
   });

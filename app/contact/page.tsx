@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { GradientBlob } from "@/components/shared/gradient-blob";
@@ -41,9 +41,8 @@ export default function ContactPage() {
           <div className="space-y-6">
             {[
               { icon: Mail, label: "Email", value: SITE_EMAIL },
-              { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
-              { icon: MapPin, label: "Office", value: "100 Market St, San Francisco, CA" },
-              { icon: Clock, label: "Hours", value: "Mon–Fri, 9am–6pm PST" },
+              { icon: MapPin, label: "Office", value: "Dhaka, Bangladesh" },
+              { icon: Clock, label: "Hours", value: "Mon–Fri, 9am–6pm BST" },
             ].map((item) => (
               <Card key={item.label} className="glass border-border/50">
                 <CardContent className="p-6 flex items-center gap-4">
@@ -77,16 +76,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section-padding pt-0">
-        <div className="container-custom rounded-2xl overflow-hidden h-[400px]">
-          <iframe
-            src="https://maps.google.com/maps?q=San+Francisco&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            className="w-full h-full border-0 grayscale opacity-80 hover:opacity-100 transition-opacity"
-            title="Office location"
-            loading="lazy"
-          />
-        </div>
-      </section>
     </>
   );
 }

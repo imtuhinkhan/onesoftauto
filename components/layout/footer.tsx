@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Share2, Globe, Mail, MapPin, Phone, Link2 } from "lucide-react";
+import { Share2, Globe, Mail, MapPin, Link2 } from "lucide-react";
 import { SITE_NAME, SITE_EMAIL, NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 import { SiteLogo } from "@/components/layout/site-logo";
 
@@ -72,13 +72,9 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-primary shrink-0" />
                 {SITE_EMAIL}
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-primary shrink-0" />
-                +1 (555) 123-4567
-              </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                100 Market St, San Francisco, CA 94105
+                Dhaka, Bangladesh
               </li>
             </ul>
           </div>
