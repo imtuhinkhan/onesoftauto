@@ -11,17 +11,19 @@ import {
   Settings,
   LogOut,
   Layers,
+  MessageSquareQuote,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SiteLogo } from "@/components/layout/site-logo";
 
 const links = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/blogs", label: "Blogs", icon: FileText },
   { href: "/admin/case-studies", label: "Case Studies", icon: Briefcase },
-  { href: "/admin/leads", label: "Leads", icon: Mail },
   { href: "/admin/services", label: "Services", icon: Layers },
+  { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
+  { href: "/admin/leads", label: "Leads", icon: Mail },
 ];
 
 export function AdminSidebar() {
@@ -36,7 +38,9 @@ export function AdminSidebar() {
       <nav className="flex-1 p-4 space-y-1">
         {links.map((link) => {
           const Icon = link.icon;
-          const active = pathname === link.href;
+          const active = link.exact
+            ? pathname === link.href
+            : pathname === link.href || pathname.startsWith(`${link.href}/`);
           return (
             <Link
               key={link.href}

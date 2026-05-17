@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Syne } from "next/font/google";
 import { Providers } from "@/components/providers";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+import { LayoutShell } from "@/components/layout/layout-shell";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, BRAND } from "@/lib/constants";
 import "./globals.css";
 
@@ -66,9 +65,7 @@ export default function RootLayout({
         className={`${outfit.variable} ${syne.variable} min-h-screen antialiased`}
       >
         <Providers>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </Providers>
       </body>
     </html>

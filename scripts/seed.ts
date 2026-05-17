@@ -4,10 +4,11 @@ import { config } from "dotenv";
 import { resolve } from "path";
 
 config({ path: resolve(process.cwd(), ".env.local") });
+config({ path: resolve(process.cwd(), ".env") });
 
 const MONGODB_URI = process.env.MONGODB_URI;
 if (!MONGODB_URI) {
-  console.error("MONGODB_URI is required in .env.local");
+  console.error("MONGODB_URI is required in .env or .env.local");
   process.exit(1);
 }
 
