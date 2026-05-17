@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { ArrowLeft } from "lucide-react";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
 export async function generateStaticParams() {
   const blogs = await getBlogs();
@@ -17,14 +17,16 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}) {
   const { slug } = await params;
   const post = await getBlogBySlug(slug);
   if (!post) return { title: "Blog" };
-  return {
+  return getPageMetadata({
     title: post.seoTitle ?? post.title,
     description: post.seoDescription ?? post.excerpt,
-  };
+    path: `/blog/${slug}`,
+    image: post.coverImage,
+  });
 }
 
 export default async function BlogPostPage({

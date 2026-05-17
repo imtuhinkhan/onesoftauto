@@ -4,12 +4,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GradientBlob } from "@/components/shared/gradient-blob";
 import { ContactForm } from "@/components/contact/contact-form";
 import { SITE_EMAIL } from "@/lib/constants";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with Onesoftauto. Book a call or send us a message.",
-};
+export async function generateMetadata() {
+  return getPageMetadata({
+    title: "Contact",
+    description: "Get in touch with us. Book a call or send us a message.",
+    path: "/contact",
+  });
+}
 
 const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
 

@@ -6,13 +6,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GradientBlob } from "@/components/shared/gradient-blob";
 import { CTASection } from "@/components/home/sections";
 import { ArrowRight } from "lucide-react";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Web development, SaaS, WordPress, server administration, cybersecurity, mobile apps, AI, and more.",
-};
+export async function generateMetadata() {
+  return getPageMetadata({
+    title: "Services",
+    description:
+      "Web development, SaaS, WordPress, server administration, cybersecurity, mobile apps, AI, and more.",
+    path: "/services",
+  });
+}
 
 export default async function ServicesPage() {
   const services = await getServices();

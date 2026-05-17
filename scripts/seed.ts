@@ -53,12 +53,9 @@ async function seed() {
   await Blog.insertMany(seedBlogs);
   await CaseStudy.insertMany(seedCaseStudies);
   await Testimonial.insertMany(seedTestimonials);
+  const { DEFAULT_SITE_SETTINGS } = await import("../lib/site-settings-defaults");
   await Settings.create({
-    siteName: "Onesoftauto",
-    tagline: "Premium Software Development",
-    email: "hello@onesoftauto.com",
-    phone: "",
-    address: "Dhaka, Bangladesh",
+    ...DEFAULT_SITE_SETTINGS,
     calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
     stats: agencyStats,
   });

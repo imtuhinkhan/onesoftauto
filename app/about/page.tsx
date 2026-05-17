@@ -4,12 +4,15 @@ import { GradientBlob } from "@/components/shared/gradient-blob";
 import { CTASection } from "@/components/home/sections";
 import { MotionDiv } from "@/components/motion/motion-wrapper";
 import { Target, Eye, Heart, Zap, Shield, Users } from "lucide-react";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about Onesoftauto — our mission, values, and story.",
-};
+export async function generateMetadata() {
+  return getPageMetadata({
+    title: "About Us",
+    description: "Learn about our mission, values, and the team behind your next digital product.",
+    path: "/about",
+  });
+}
 
 const values = [
   { icon: Target, title: "Excellence", desc: "We deliver nothing short of world-class quality." },

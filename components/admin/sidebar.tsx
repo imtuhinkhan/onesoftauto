@@ -12,6 +12,8 @@ import {
   LogOut,
   Layers,
   MessageSquareQuote,
+  Cog,
+  ExternalLink,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -24,6 +26,7 @@ const links = [
   { href: "/admin/services", label: "Services", icon: Layers },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
   { href: "/admin/leads", label: "Leads", icon: Mail },
+  { href: "/admin/settings", label: "Site Settings", icon: Cog },
 ];
 
 export function AdminSidebar() {
@@ -61,7 +64,7 @@ export function AdminSidebar() {
       <div className="p-4 border-t border-border/50 space-y-2">
         <Button variant="ghost" className="w-full justify-start" asChild>
           <Link href="/">
-            <Settings className="h-4 w-4 mr-2" />
+            <ExternalLink className="h-4 w-4 mr-2" />
             View Site
           </Link>
         </Button>

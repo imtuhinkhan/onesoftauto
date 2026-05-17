@@ -2,12 +2,15 @@ import { getCaseStudies } from "@/lib/data";
 import { CaseStudyFilterGrid } from "@/components/case-studies/filter-grid";
 import { GradientBlob } from "@/components/shared/gradient-blob";
 import { Badge } from "@/components/ui/badge";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description: "Explore our portfolio of successful web, SaaS, mobile, and AI projects.",
-};
+export async function generateMetadata() {
+  return getPageMetadata({
+    title: "Case Studies",
+    description: "Explore our portfolio of successful web, SaaS, mobile, and AI projects.",
+    path: "/case-studies",
+  });
+}
 
 export default async function CaseStudiesPage() {
   const caseStudies = await getCaseStudies();

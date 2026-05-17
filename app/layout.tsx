@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, Syne } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { LayoutShell } from "@/components/layout/layout-shell";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, BRAND } from "@/lib/constants";
+import { getSiteSettings } from "@/lib/site-settings";
+import { buildRootMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -15,56 +16,24 @@ const syne = Syne({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${SITE_NAME} | Premium Software Development Agency`,
-    template: `%s | ${SITE_NAME}`,
-  },
-  description: SITE_DESCRIPTION,
-  keywords: [
-    "software agency",
-    "web development",
-    "SaaS development",
-    "mobile apps",
-    "AI solutions",
-    "Shopify development",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-  },
-  robots: { index: true, follow: true },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: BRAND.favicon, type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: BRAND.favicon,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  return buildRootMetadata(settings);
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${outfit.variable} ${syne.variable} min-h-screen antialiased`}
       >
-        <Providers>
+        <Providers siteSettings={settings}>
           <LayoutShell>{children}</LayoutShell>
         </Providers>
       </body>

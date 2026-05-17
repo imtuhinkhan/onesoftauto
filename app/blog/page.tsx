@@ -5,12 +5,15 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { GradientBlob } from "@/components/shared/gradient-blob";
 import { formatDate } from "@/lib/utils";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Insights on software development, SaaS, AI, and digital strategy.",
-};
+export async function generateMetadata() {
+  return getPageMetadata({
+    title: "Blog",
+    description: "Insights on software development, SaaS, AI, and digital strategy.",
+    path: "/blog",
+  });
+}
 
 export default async function BlogPage() {
   const blogs = await getBlogs();

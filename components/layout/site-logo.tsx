@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { BRAND, SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { useSiteSettings } from "@/lib/site-settings-context";
 
 type SiteLogoProps = {
   href?: string;
@@ -21,13 +23,14 @@ export function SiteLogo({
   imageClassName,
   size = "md",
 }: SiteLogoProps) {
+  const settings = useSiteSettings();
   const h = heightClass[size];
 
   const logo = (
     <>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={BRAND.logoDark}
+        src={settings.logoDark}
         alt=""
         width={180}
         height={45}
@@ -35,7 +38,7 @@ export function SiteLogo({
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={BRAND.logoWhite}
+        src={settings.logoWhite}
         alt=""
         width={180}
         height={45}
@@ -48,7 +51,7 @@ export function SiteLogo({
     return (
       <Link
         href={href}
-        aria-label={SITE_NAME}
+        aria-label={settings.siteName}
         className={cn("inline-flex shrink-0 items-center", className)}
       >
         {logo}

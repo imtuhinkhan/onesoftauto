@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
 export async function generateStaticParams() {
   const studies = await getCaseStudies();
@@ -17,11 +17,16 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}) {
   const { slug } = await params;
   const study = await getCaseStudyBySlug(slug);
   if (!study) return { title: "Case Study" };
-  return { title: study.title, description: study.excerpt };
+  return getPageMetadata({
+    title: study.title,
+    description: study.excerpt,
+    path: `/case-studies/${slug}`,
+    image: study.coverImage,
+  });
 }
 
 export default async function CaseStudyDetailPage({

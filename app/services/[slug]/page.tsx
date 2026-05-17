@@ -15,7 +15,7 @@ import { ServiceDetailSections } from "@/components/services/service-detail-sect
 import { ServiceProcess } from "@/components/services/service-process";
 import { CTASection } from "@/components/home/sections";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo/page";
 
 export async function generateStaticParams() {
   const services = await getServices();
@@ -26,14 +26,15 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}) {
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
   if (!service) return { title: "Service" };
-  return {
+  return getPageMetadata({
     title: service.title,
     description: service.shortDescription,
-  };
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServiceDetailPage({

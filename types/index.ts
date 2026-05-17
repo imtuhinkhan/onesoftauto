@@ -103,7 +103,7 @@ export interface Media {
   createdAt: Date | string;
 }
 
-export interface Settings {
+export interface SiteSettings {
   _id?: string;
   siteName: string;
   tagline: string;
@@ -113,4 +113,24 @@ export interface Settings {
   calendlyUrl: string;
   socialLinks: { platform: string; url: string }[];
   stats: { label: string; value: number; suffix?: string }[];
+  logoDark: string;
+  logoWhite: string;
+  favicon: string;
+  appleTouchIcon: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords: string[];
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: string;
+  ogType: string;
+  ogLocale: string;
+  twitterCard: string;
+  twitterSite: string;
+  twitterCreator: string;
+  linkedinUrl: string;
+  robotsIndex: boolean;
 }
+
+/** @deprecated Use SiteSettings */
+export type Settings = SiteSettings;
