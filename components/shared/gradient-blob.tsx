@@ -7,22 +7,19 @@ export function GradientBlob({ className }: { className?: string }) {
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 90, 0],
-          x: [0, 50, 0],
-          y: [0, -30, 0],
+          scale: [1, 1.15, 1],
+          opacity: [0.35, 0.5, 0.35],
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-1/4 -right-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-pink-500/30 blur-3xl"
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-1/3 -left-1/4 h-[560px] w-[560px] rounded-full bg-[#00d2ff]/25 blur-[120px]"
       />
       <motion.div
         animate={{
-          scale: [1.2, 1, 1.2],
-          rotate: [90, 0, 90],
-          x: [0, -40, 0],
+          scale: [1.1, 1, 1.1],
+          opacity: [0.3, 0.45, 0.3],
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-1/4 -left-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-cyan-500/20 via-blue-500/20 to-indigo-500/30 blur-3xl"
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-1/3 -right-1/4 h-[520px] w-[520px] rounded-full bg-[#7a5af8]/30 blur-[120px]"
       />
     </div>
   );

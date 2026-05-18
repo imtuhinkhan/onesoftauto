@@ -7,7 +7,7 @@ export function HeroIllustration() {
     <div className="relative aspect-square w-full max-w-lg mx-auto" aria-hidden>
       {/* Ambient glow */}
       <motion.div
-        className="absolute inset-[8%] rounded-full bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-pink-500/20 blur-3xl"
+        className="absolute inset-[8%] rounded-full bg-gradient-to-br from-[#00d2ff]/25 via-[#7a5af8]/20 to-[#7a5af8]/10 blur-3xl"
         animate={{ scale: [1, 1.06, 1], opacity: [0.6, 0.85, 0.6] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -23,21 +23,21 @@ export function HeroIllustration() {
       >
         <defs>
           <linearGradient id="hi-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="50%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#ec4899" />
+            <stop offset="0%" stopColor="#00d2ff" />
+            <stop offset="50%" stopColor="#ffffff" />
+            <stop offset="100%" stopColor="#7a5af8" />
           </linearGradient>
           <linearGradient id="hi-grad-soft" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6366f1" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#ec4899" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="#00d2ff" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#7a5af8" stopOpacity="0.2" />
           </linearGradient>
           <linearGradient id="hi-screen" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#1e1b4b" />
-            <stop offset="100%" stopColor="#0f172a" />
+            <stop offset="0%" stopColor="#111111" />
+            <stop offset="100%" stopColor="#050505" />
           </linearGradient>
           <linearGradient id="hi-bar" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#a855f7" />
+            <stop offset="0%" stopColor="#00d2ff" />
+            <stop offset="100%" stopColor="#7a5af8" />
           </linearGradient>
           <filter id="hi-glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="8" result="blur" />
@@ -121,7 +121,7 @@ export function HeroIllustration() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
-          <rect x="344" y="195" width="72" height="118" rx="14" fill="#0f172a" stroke="url(#hi-grad)" strokeWidth="1.2" strokeOpacity="0.4" />
+          <rect x="344" y="195" width="72" height="118" rx="14" fill="#111111" stroke="url(#hi-grad)" strokeWidth="1.2" strokeOpacity="0.4" />
           <rect x="368" y="205" width="24" height="4" rx="2" fill="white" fillOpacity="0.15" />
           <rect x="354" y="220" width="52" height="36" rx="8" fill="url(#hi-grad-soft)" />
           <circle cx="380" cy="238" r="10" fill="url(#hi-grad)" fillOpacity="0.6" />
@@ -135,7 +135,7 @@ export function HeroIllustration() {
           animate={{ y: [0, -5, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
         >
-          <rect x="188" y="58" width="104" height="56" rx="14" fill="#0f172a" stroke="url(#hi-grad)" strokeWidth="1" strokeOpacity="0.35" />
+          <rect x="188" y="58" width="104" height="56" rx="14" fill="#111111" stroke="url(#hi-grad)" strokeWidth="1" strokeOpacity="0.35" />
           <path
             d="M220 78 C220 70 228 66 236 70 C240 62 252 62 256 72 C264 72 270 78 268 86 C276 90 276 100 268 102 L212 102 C204 100 204 88 212 84 C210 80 214 76 220 78Z"
             fill="url(#hi-grad)"
@@ -145,7 +145,7 @@ export function HeroIllustration() {
             strokeOpacity="0.5"
           />
           <rect x="210" y="108" width="60" height="4" rx="2" fill="white" fillOpacity="0.12" />
-          <circle cx="268" cy="82" r="6" fill="#34d399" fillOpacity="0.9" />
+          <circle cx="268" cy="82" r="6" fill="#10b981" fillOpacity="0.9" />
         </motion.g>
 
         {/* Database — bottom left */}
@@ -156,7 +156,7 @@ export function HeroIllustration() {
           <ellipse cx="95" cy="355" rx="32" ry="10" fill="url(#hi-grad)" fillOpacity="0.2" />
           <path
             d="M63 355 L63 325 C63 318 76 312 95 312 C114 312 127 318 127 325 L127 355 C127 362 114 368 95 368 C76 368 63 362 63 355Z"
-            fill="#0f172a"
+            fill="#111111"
             stroke="url(#hi-grad)"
             strokeWidth="1"
             strokeOpacity="0.4"
@@ -171,7 +171,7 @@ export function HeroIllustration() {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           style={{ transformOrigin: "385px 355px" }}
         >
-          <rect x="348" y="328" width="74" height="54" rx="12" fill="#0f172a" stroke="url(#hi-grad)" strokeWidth="1" strokeOpacity="0.35" />
+          <rect x="348" y="328" width="74" height="54" rx="12" fill="#111111" stroke="url(#hi-grad)" strokeWidth="1" strokeOpacity="0.35" />
           <path
             d="M372 345 L378 358 L392 358 L381 367 L385 382 L372 373 L359 382 L363 367 L352 358 L366 358 Z"
             fill="url(#hi-grad)"

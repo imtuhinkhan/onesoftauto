@@ -18,7 +18,7 @@ export function ServiceDetailSections({ service }: { service: Service }) {
           {benefits.items.map((item) => (
             <div
               key={item}
-              className="flex gap-3 items-start p-5 rounded-2xl border border-border/50 bg-gradient-to-br from-indigo-500/5 to-pink-500/5"
+              className="flex gap-3 items-start p-5 rounded-2xl border border-border/50 brand-gradient-bg-soft"
             >
               <Sparkles className="h-5 w-5 text-primary shrink-0 mt-0.5" />
               <p className="text-sm text-muted-foreground leading-relaxed">{item}</p>

@@ -46,7 +46,7 @@ export function ServiceProcess({ process }: { process: ProcessStep[] }) {
 
         <div className="relative max-w-3xl mx-auto">
           <div
-            className="absolute left-[19px] sm:left-6 top-4 bottom-4 w-px bg-gradient-to-b from-primary via-purple-500/50 to-pink-500/30 hidden sm:block"
+            className="absolute left-[19px] sm:left-6 top-4 bottom-4 w-px bg-gradient-to-b from-primary via-accent/50 to-accent/20 hidden sm:block"
             aria-hidden
           />
 
@@ -65,7 +65,7 @@ export function ServiceProcess({ process }: { process: ProcessStep[] }) {
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
                   <div className="relative z-10 flex flex-col items-center shrink-0">
-                    <span className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-pink-500 text-sm sm:text-base font-bold text-white shadow-lg shadow-indigo-500/30 ring-4 ring-background">
+                    <span className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl brand-gradient-bg text-sm sm:text-base font-bold text-[#050505] shadow-lg shadow-cyan-500/25 ring-4 ring-background">
                       {index + 1}
                     </span>
                   </div>

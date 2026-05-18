@@ -37,7 +37,7 @@ export function ServicesPreview({ services }: { services: Service[] }) {
                 <Link href={`/services/${service.slug}`}>
                   <Card className="group h-full glass hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 border-border/50">
                     <CardContent className="p-6">
-                      <motion.div className="h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <motion.div className="h-12 w-12 rounded-xl brand-gradient-bg-soft flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ring-1 ring-white/10">
                         <Icon className="h-6 w-6 text-primary" />
                       </motion.div>
                       <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
@@ -216,7 +216,7 @@ export function CTASection() {
     <section className="home-section pb-6 lg:pb-8">
       <motion.div className="container-custom">
         <motion.div className="relative rounded-3xl overflow-hidden p-10 lg:p-14 text-center">
-          <motion.div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600" />
+          <motion.div className="absolute inset-0 bg-gradient-to-br from-[#00d2ff] via-[#4f7cff] to-[#7a5af8]" />
           <motion.div className="absolute inset-0 bg-black/20" />
           <MotionDiv className="relative z-10">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
@@ -226,7 +226,7 @@ export function CTASection() {
               Let&apos;s discuss your project and create a roadmap to success.
             </p>
             <motion.div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-purple-700 hover:bg-white/90" asChild>
+              <Button size="lg" className="bg-white text-[#050505] hover:bg-white/90 font-semibold" asChild>
                 <Link href="/contact">Book a Free Consultation</Link>
               </Button>
               <Button

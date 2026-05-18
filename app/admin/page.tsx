@@ -11,9 +11,9 @@ export default async function AdminDashboardPage() {
   const stats = await getDashboardStats();
 
   const cards = [
-    { label: "Services", value: stats.services, icon: Layers, color: "text-indigo-500" },
-    { label: "Blog Posts", value: stats.blogs, icon: FileText, color: "text-purple-500" },
-    { label: "Case Studies", value: stats.caseStudies, icon: Briefcase, color: "text-pink-500" },
+    { label: "Services", value: stats.services, icon: Layers, color: "text-primary" },
+    { label: "Blog Posts", value: stats.blogs, icon: FileText, color: "text-accent" },
+    { label: "Case Studies", value: stats.caseStudies, icon: Briefcase, color: "text-[#00d2ff]" },
     { label: "New Leads", value: stats.newLeads, icon: Mail, color: "text-cyan-500" },
   ];
 

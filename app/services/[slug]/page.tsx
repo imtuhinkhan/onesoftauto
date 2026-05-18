@@ -60,7 +60,7 @@ export default async function ServiceDetailPage({
             </Link>
           </Button>
           <div className="max-w-3xl">
-            <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-pink-500/20 flex items-center justify-center mb-6 ring-1 ring-primary/20">
+            <div className="h-14 w-14 rounded-2xl brand-gradient-bg-soft flex items-center justify-center mb-6 ring-1 ring-primary/30">
               <Icon className="h-7 w-7 text-primary" />
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold">

@@ -13,7 +13,7 @@ const badgeVariants = cva(
           "border-transparent bg-secondary text-secondary-foreground",
         outline: "text-foreground",
         gradient:
-          "border-transparent bg-gradient-to-r from-indigo-500/20 to-pink-500/20 text-foreground",
+          "border border-primary/20 bg-primary/10 text-foreground backdrop-blur-sm dark:border-white/10 dark:bg-white/5",
       },
     },
     defaultVariants: { variant: "default" },

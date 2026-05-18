@@ -45,7 +45,7 @@ export default async function ServicesPage() {
               <Link key={service.slug} href={`/services/${service.slug}`} className="group">
                 <Card className="h-full glass border-border/50 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300">
                   <CardContent className="p-6 flex flex-col h-full">
-                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <div className="h-12 w-12 rounded-xl brand-gradient-bg-soft flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ring-1 ring-white/10">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <h2 className="font-semibold text-lg group-hover:text-primary transition-colors">
