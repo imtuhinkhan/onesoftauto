@@ -15,7 +15,13 @@ const blogSchema = z.object({
   slug: z.string().min(1, "Slug is required"),
   excerpt: z.string().min(1, "Excerpt is required"),
   content: z.string().min(1, "Content is required"),
-  coverImage: z.string().url("Cover image must be a valid URL"),
+  coverImage: z
+    .string()
+    .min(1, "Cover image is required")
+    .refine(
+      (v) => v.startsWith("/") || v.startsWith("http://") || v.startsWith("https://"),
+      "Cover image must be a path (e.g. /images/cover.jpg) or a full URL"
+    ),
   author: z.string().min(1, "Author is required"),
   authorAvatar: z.string().url().optional().or(z.literal("")),
   category: z.string().min(1, "Category is required"),

@@ -215,7 +215,44 @@ body {
   100% { background-position: 200% 0; }
 }
 
-.animate-shimmer {
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
+@keyframes clients-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-clients-marquee {
+  animation: clients-marquee 40s linear infinite;
+}
+
+.client-logo-mono {
+  height: 2.25rem;
+  width: auto;
+  max-width: 10rem;
+  object-fit: contain;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease;
+}
+
+.dark .client-logo-mono {
+  filter: grayscale(100%) brightness(0) invert(1);
+}
+
+:root:not(.dark) .client-logo-mono {
+  filter: grayscale(100%) brightness(0);
+  opacity: 0.45;
+}
+
+.client-logo-mono:hover {
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-clients-marquee {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding-inline: 1rem;
+  }
 }

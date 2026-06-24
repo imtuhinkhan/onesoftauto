@@ -60,8 +60,14 @@ export function BlogForm({ action, blog }: BlogFormProps) {
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="coverImage">Cover image URL *</Label>
-              <Input id="coverImage" name="coverImage" type="url" defaultValue={blog?.coverImage} required />
+              <Label htmlFor="coverImage">Cover image URL or path *</Label>
+              <Input
+                id="coverImage"
+                name="coverImage"
+                defaultValue={blog?.coverImage}
+                placeholder="/images/blog/cover.jpg or https://..."
+                required
+              />
               <FieldError errors={state.fieldErrors?.coverImage} />
             </div>
             <div className="space-y-2">

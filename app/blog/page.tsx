@@ -70,7 +70,12 @@ export default async function BlogPage() {
           )}
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {rest.map((post) => (
+            {rest.length === 0 && featured.length === 0 ? (
+              <p className="text-muted-foreground col-span-full text-center py-12">
+                No blog posts yet. Check back soon for new insights.
+              </p>
+            ) : (
+              rest.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                 <Card className="overflow-hidden glass border-border/50 h-full hover:shadow-lg transition-all">
                   <div className="relative aspect-[16/10] overflow-hidden">
@@ -87,7 +92,8 @@ export default async function BlogPage() {
                   </CardContent>
                 </Card>
               </Link>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>

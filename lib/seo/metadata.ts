@@ -79,6 +79,13 @@ export type PageSeoInput = {
   noIndex?: boolean;
 };
 
+export type ArticleSeoInput = PageSeoInput & {
+  author?: string;
+  publishedAt?: Date | string;
+  tags?: string[];
+  category?: string;
+};
+
 export function buildPageMetadata(
   settings: SiteSettings,
   page: PageSeoInput
@@ -121,5 +128,27 @@ export function buildPageMetadata(
     other: settings.linkedinUrl
       ? { "linkedin:page": settings.linkedinUrl }
       : undefined,
+  };
+}
+
+export function buildArticleMetadata(
+  settings: SiteSettings,
+  article: ArticleSeoInput
+): Metadata {
+  const base = buildPageMetadata(settings, article);
+  const publishedTime = article.publishedAt
+    ? new Date(article.publishedAt).toISOString()
+    : undefined;
+
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      ...(publishedTime ? { publishedTime } : {}),
+      ...(article.author ? { authors: [article.author] } : {}),
+      ...(article.tags?.length ? { tags: article.tags } : {}),
+      ...(article.category ? { section: article.category } : {}),
+    },
   };
 }

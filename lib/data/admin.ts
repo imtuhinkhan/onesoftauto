@@ -3,7 +3,9 @@ import { Blog as BlogModel } from "@/models/Blog";
 import { Service as ServiceModel } from "@/models/Service";
 import { CaseStudy as CaseStudyModel } from "@/models/CaseStudy";
 import { Testimonial as TestimonialModel } from "@/models/Testimonial";
+import { Client as ClientModel } from "@/models/Client";
 import type { BlogPost, CaseStudy, Service, Testimonial } from "@/types";
+import type { ClientBrand } from "@/types/client";
 import mongoose from "mongoose";
 
 async function ensureDb() {
@@ -70,5 +72,18 @@ export async function getAdminTestimonialById(
   if (!mongoose.Types.ObjectId.isValid(id)) return null;
   await ensureDb();
   const doc = await TestimonialModel.findById(id).lean();
+  return doc ? serialize(doc) : null;
+}
+
+export async function getAdminClients(): Promise<ClientBrand[]> {
+  await ensureDb();
+  const docs = await ClientModel.find().sort("order").lean();
+  return serialize(docs);
+}
+
+export async function getAdminClientById(id: string): Promise<ClientBrand | null> {
+  if (!mongoose.Types.ObjectId.isValid(id)) return null;
+  await ensureDb();
+  const doc = await ClientModel.findById(id).lean();
   return doc ? serialize(doc) : null;
 }

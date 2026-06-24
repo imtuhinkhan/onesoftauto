@@ -20,12 +20,14 @@ async function seed() {
   const { Blog } = await import("../models/Blog");
   const { CaseStudy } = await import("../models/CaseStudy");
   const { Testimonial } = await import("../models/Testimonial");
+  const { Client } = await import("../models/Client");
   const { Settings } = await import("../models/Settings");
   const {
     seedServices,
     seedBlogs,
     seedCaseStudies,
     seedTestimonials,
+    clientLogos,
     agencyStats,
   } = await import("../lib/data/seed");
 
@@ -35,6 +37,7 @@ async function seed() {
     Blog.deleteMany({}),
     CaseStudy.deleteMany({}),
     Testimonial.deleteMany({}),
+    Client.deleteMany({}),
     Settings.deleteMany({}),
   ]);
 
@@ -53,6 +56,14 @@ async function seed() {
   await Blog.insertMany(seedBlogs);
   await CaseStudy.insertMany(seedCaseStudies);
   await Testimonial.insertMany(seedTestimonials);
+  await Client.insertMany(
+    clientLogos.map((c, i) => ({
+      name: c.name,
+      logo: c.logo,
+      order: i,
+      published: true,
+    }))
+  );
   const { DEFAULT_SITE_SETTINGS } = await import("../lib/site-settings-defaults");
   await Settings.create({
     ...DEFAULT_SITE_SETTINGS,

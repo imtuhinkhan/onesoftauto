@@ -503,15 +503,15 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
   },
 ];
 
-export const clientLogos = [
-  "NovaPay",
-  "FlowStack",
-  "HealthCore",
-  "CloudServe",
-  "Maison Élégance",
-  "TechVentures",
-  "DataPulse",
-  "GreenLeaf",
+export const clientLogos: { name: string; logo: string }[] = [
+  { name: "NovaPay", logo: "/clients/novapay.svg" },
+  { name: "FlowStack", logo: "/clients/flowstack.svg" },
+  { name: "HealthCore", logo: "/clients/healthcore.svg" },
+  { name: "CloudServe", logo: "/clients/cloudserve.svg" },
+  { name: "Maison Élégance", logo: "/clients/maison-elegance.svg" },
+  { name: "TechVentures", logo: "/clients/techventures.svg" },
+  { name: "DataPulse", logo: "/clients/datapulse.svg" },
+  { name: "GreenLeaf", logo: "/clients/greenleaf.svg" },
 ];
 
 export const agencyStats = [

@@ -13,6 +13,7 @@ export const SITE_DESCRIPTION =
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;

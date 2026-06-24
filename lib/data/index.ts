@@ -3,14 +3,17 @@ import { Service as ServiceModel } from "@/models/Service";
 import { Blog as BlogModel } from "@/models/Blog";
 import { CaseStudy as CaseStudyModel } from "@/models/CaseStudy";
 import { Testimonial as TestimonialModel } from "@/models/Testimonial";
+import { Client as ClientModel } from "@/models/Client";
 import { Lead as LeadModel } from "@/models/Lead";
 import {
   seedServices,
   seedBlogs,
   seedCaseStudies,
   seedTestimonials,
+  clientLogos,
 } from "@/lib/data/seed";
 import type { Service, BlogPost, CaseStudy, Testimonial } from "@/types";
+import type { ClientBrand } from "@/types/client";
 
 async function tryDb<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   try {
@@ -78,6 +81,20 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       return JSON.parse(JSON.stringify(docs)) as Testimonial[];
     },
     seedTestimonials as Testimonial[]
+  );
+}
+
+export async function getClients(): Promise<ClientBrand[]> {
+  return tryDb(
+    async () => {
+      const docs = await ClientModel.find({ published: true }).sort("order").lean();
+      return JSON.parse(JSON.stringify(docs)) as ClientBrand[];
+    },
+    clientLogos.map((c, i) => ({
+      ...c,
+      order: i,
+      published: true,
+    }))
   );
 }
 

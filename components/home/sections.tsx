@@ -11,8 +11,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MotionDiv } from "@/components/motion/motion-wrapper";
 import { processSteps, faqs } from "@/lib/data/seed";
+import { formatDate } from "@/lib/utils";
 import React from "react";
-import type { Service, CaseStudy, Testimonial } from "@/types";
+import type { Service, CaseStudy, Testimonial, BlogPost } from "@/types";
 
 export function ServicesPreview({ services }: { services: Service[] }) {
   return (
@@ -102,6 +103,65 @@ export function PortfolioPreview({ caseStudies }: { caseStudies: CaseStudy[] }) 
                     </h3>
                     <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
                       {study.excerpt}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </MotionDiv>
+          ))}
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+export function BlogPreview({ blogs }: { blogs: BlogPost[] }) {
+  const posts = blogs.filter((b) => b.featured).slice(0, 3);
+  const display = posts.length > 0 ? posts : blogs.slice(0, 3);
+  if (display.length === 0) return null;
+
+  return (
+    <section className="home-section">
+      <motion.div className="container-custom">
+        <MotionDiv className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10 lg:mb-12">
+          <motion.div>
+            <Badge variant="gradient" className="mb-4">
+              Blog
+            </Badge>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold">
+              Latest <span className="gradient-text">Insights</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-xl">
+              Expert perspectives on software, SaaS, and digital strategy.
+            </p>
+          </motion.div>
+          <Button variant="outline" asChild>
+            <Link href="/blog">
+              View All <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </MotionDiv>
+        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {display.map((post, i) => (
+            <MotionDiv key={post.slug} delay={i * 0.1}>
+              <Link href={`/blog/${post.slug}`} className="group block h-full">
+                <Card className="overflow-hidden border-border/50 glass hover:shadow-2xl transition-all duration-500 h-full">
+                  <motion.div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <Badge className="absolute top-4 left-4">{post.category}</Badge>
+                  </motion.div>
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold text-xl group-hover:text-primary transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
+                    <p className="text-xs text-muted-foreground mt-4">
+                      {formatDate(post.publishedAt)} · {post.readTime} min read
                     </p>
                   </CardContent>
                 </Card>
