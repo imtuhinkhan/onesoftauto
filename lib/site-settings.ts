@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { connectDB } from "@/lib/mongodb";
 import { Settings as SettingsModel } from "@/models/Settings";
 import { SITE_URL } from "@/lib/constants";
@@ -19,7 +21,7 @@ function mergeSettings(doc: Partial<SiteSettings> | null): SiteSettings {
   };
 }
 
-export async function getSiteSettings(): Promise<SiteSettings> {
+async function fetchSiteSettings(): Promise<SiteSettings> {
   try {
     if (!process.env.MONGODB_URI) return { ...DEFAULT_SITE_SETTINGS };
     await connectDB();
@@ -29,6 +31,14 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     return { ...DEFAULT_SITE_SETTINGS };
   }
 }
+
+const getCachedSiteSettings = unstable_cache(
+  fetchSiteSettings,
+  ["site-settings"],
+  { revalidate: 300 }
+);
+
+export const getSiteSettings = cache(getCachedSiteSettings);
 
 export function absoluteUrl(path: string, base = SITE_URL): string {
   if (!path) return base;

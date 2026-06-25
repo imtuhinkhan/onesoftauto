@@ -1,11 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GradientBlob } from "@/components/shared/gradient-blob";
-import { HeroIllustration } from "@/components/home/hero-illustration";
+
+const HeroIllustration = dynamic(
+  () => import("@/components/home/hero-illustration").then((m) => m.HeroIllustration),
+  {
+    ssr: false,
+    loading: () => <div className="relative hidden lg:block aspect-square w-full max-w-lg mx-auto" />,
+  }
+);
 
 export function Hero() {
   return (

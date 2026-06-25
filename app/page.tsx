@@ -1,34 +1,41 @@
+import { Suspense } from "react";
 import { Hero } from "@/components/home/hero";
-import { ClientsSection } from "@/components/home/clients-section";
+import { ProcessSection, FAQSection, CTASection } from "@/components/home/sections";
 import {
-  ServicesPreview,
-  PortfolioPreview,
-  BlogPreview,
-  TestimonialsSection,
-  ProcessSection,
-  FAQSection,
-  CTASection,
-} from "@/components/home/sections";
-import { getServices, getCaseStudies, getTestimonials, getClients, getBlogs } from "@/lib/data";
+  HomeServicesPreview,
+  HomePortfolioPreview,
+  HomeClientsSection,
+  HomeTestimonialsSection,
+  HomeBlogPreview,
+} from "@/components/home/home-async-sections";
+import {
+  SectionSkeleton,
+  ClientsSkeleton,
+  TestimonialsSkeleton,
+} from "@/components/home/section-skeletons";
 
-export default async function HomePage() {
-  const [services, caseStudies, testimonials, clients, blogs] = await Promise.all([
-    getServices(),
-    getCaseStudies(),
-    getTestimonials(),
-    getClients(),
-    getBlogs(),
-  ]);
+export const revalidate = 60;
 
+export default function HomePage() {
   return (
     <div className="flex flex-col">
       <Hero />
-      <ServicesPreview services={services} />
+      <Suspense fallback={<SectionSkeleton cards={4} />}>
+        <HomeServicesPreview />
+      </Suspense>
       <ProcessSection />
-      <PortfolioPreview caseStudies={caseStudies} />
-      <ClientsSection clients={clients} />
-      <TestimonialsSection testimonials={testimonials} />
-      <BlogPreview blogs={blogs} />
+      <Suspense fallback={<SectionSkeleton cards={3} />}>
+        <HomePortfolioPreview />
+      </Suspense>
+      <Suspense fallback={<ClientsSkeleton />}>
+        <HomeClientsSection />
+      </Suspense>
+      <Suspense fallback={<TestimonialsSkeleton />}>
+        <HomeTestimonialsSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton cards={3} />}>
+        <HomeBlogPreview />
+      </Suspense>
       <FAQSection />
       <CTASection />
     </div>
