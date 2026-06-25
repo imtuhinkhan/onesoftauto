@@ -8,24 +8,65 @@ import { connectDB } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/admin/auth";
 import { checkboxValue } from "@/lib/admin/parse";
 import type { ActionState } from "@/lib/admin/action-state";
+import { saveUploadedImage } from "@/lib/admin/upload-image";
 import mongoose from "mongoose";
 
 const clientSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  logo: z.string().min(1, "Logo URL or path is required"),
+  logo: z.string().min(1, "Logo is required"),
   website: z.string().url().optional().or(z.literal("")),
   order: z.coerce.number().min(0),
   published: z.boolean(),
 });
 
-function parseClientForm(formData: FormData) {
-  return clientSchema.safeParse({
+async function resolveClientLogo(formData: FormData): Promise<
+  | { logo: string }
+  | { error: string; field: "logo" }
+> {
+  const file = formData.get("logoFile");
+  if (file instanceof File && file.size > 0) {
+    try {
+      const logo = await saveUploadedImage(file, "clients");
+      return { logo };
+    } catch (e) {
+      return {
+        error: e instanceof Error ? e.message : "Failed to upload logo",
+        field: "logo",
+      };
+    }
+  }
+
+  const existingLogo = String(formData.get("logo") ?? "").trim();
+  if (existingLogo) return { logo: existingLogo };
+
+  return { error: "Please upload a client logo", field: "logo" };
+}
+
+async function parseClientForm(formData: FormData) {
+  const logoResult = await resolveClientLogo(formData);
+  if ("error" in logoResult) {
+    return {
+      success: false as const,
+      fieldErrors: { [logoResult.field]: [logoResult.error] },
+    };
+  }
+
+  const parsed = clientSchema.safeParse({
     name: formData.get("name"),
-    logo: formData.get("logo"),
+    logo: logoResult.logo,
     website: String(formData.get("website") ?? ""),
     order: formData.get("order") ?? 0,
     published: checkboxValue(formData.get("published")),
   });
+
+  if (!parsed.success) {
+    return {
+      success: false as const,
+      fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]>,
+    };
+  }
+
+  return { success: true as const, data: parsed.data };
 }
 
 function revalidateClientPaths() {
@@ -39,9 +80,9 @@ export async function createClient(
 ): Promise<ActionState> {
   try {
     await requireAdmin();
-    const parsed = parseClientForm(formData);
+    const parsed = await parseClientForm(formData);
     if (!parsed.success) {
-      return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> };
+      return { fieldErrors: parsed.fieldErrors };
     }
     await connectDB();
     await Client.create({
@@ -64,9 +105,9 @@ export async function updateClient(
   try {
     await requireAdmin();
     if (!mongoose.Types.ObjectId.isValid(id)) return { error: "Invalid client ID" };
-    const parsed = parseClientForm(formData);
+    const parsed = await parseClientForm(formData);
     if (!parsed.success) {
-      return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> };
+      return { fieldErrors: parsed.fieldErrors };
     }
     await connectDB();
     const updated = await Client.findByIdAndUpdate(

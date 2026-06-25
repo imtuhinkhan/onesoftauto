@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckboxField, FieldError } from "@/components/admin/form-fields";
+import { ImageUploadField } from "@/components/admin/image-upload-field";
 import type { ActionState } from "@/lib/admin/action-state";
 import { initialActionState } from "@/lib/admin/action-state";
 import type { ClientBrand } from "@/types/client";
@@ -26,38 +27,23 @@ export function ClientForm({ action, client }: ClientFormProps) {
   return (
     <Card className="glass border-border/50 max-w-2xl">
       <CardContent className="p-6">
-        <form action={formAction} className="space-y-6">
+        <form action={formAction} encType="multipart/form-data" className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="name">Client name *</Label>
             <Input id="name" name="name" defaultValue={client?.name} required />
             <FieldError errors={state.fieldErrors?.name} />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="logo">Logo URL or path *</Label>
-            <Input
-              id="logo"
-              name="logo"
-              defaultValue={client?.logo}
-              placeholder="/clients/novapay.svg or https://..."
-              required
-            />
-            <p className="text-xs text-muted-foreground">
-              Use a path like /clients/logo.svg or a full image URL. Logos display in monochrome on the home page.
-            </p>
-            <FieldError errors={state.fieldErrors?.logo} />
-          </div>
-
-          {client?.logo && (
-            <div className="rounded-xl border border-border/50 bg-card/40 p-6 flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="client-logo-mono h-10 w-auto max-w-[180px]"
-              />
-            </div>
-          )}
+          <ImageUploadField
+            id="logoFile"
+            name="logoFile"
+            label={client ? "Replace logo" : "Client logo *"}
+            hint="PNG, JPG, WebP, or SVG up to 1MB. Logos display in monochrome on the home page."
+            existingUrl={client?.logo}
+            required={!client}
+            previewClassName="client-logo-mono"
+            errors={state.fieldErrors?.logo}
+          />
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="space-y-2">
