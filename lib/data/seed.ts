@@ -482,7 +482,6 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
     excerpt:
       "Lessons from building MooChatAI: how conversational commerce recovers carts, guides checkout, and lifts revenue.",
     content: `<p>Most store chat widgets answer FAQs. The ones that move revenue help shoppers find products, compare options, and complete checkout without friction.</p>
-<p><img src="/portfolio/moocha-tai.jpg" alt="MooChatAI marketing site screenshot" /></p>
 <h2>What high-converting AI chat does</h2>
 <p>From our work on <a href="https://www.moochatai.com/">MooChatAI</a>, the winning pattern is clear:</p>
 <ul>
@@ -492,6 +491,10 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
 <li>Multilingual conversations for international buyers</li>
 <li>Human handoff when the question needs a person</li>
 </ul>
+<figure>
+<img src="/portfolio/moocha-tai.jpg" alt="MooChatAI marketing site screenshot" />
+<figcaption>MooChatAI positions AI chat as a conversion channel, not just a support widget.</figcaption>
+</figure>
 <h2>Why merchants care</h2>
 <p>When AI chat is connected to catalog, cart, and order data, it stops being a support cost center and becomes a conversion channel. Merchants see faster answers, fewer abandoned carts, and clearer attribution from conversation to purchase.</p>
 <h2>What to build first</h2>
@@ -511,9 +514,12 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
     excerpt:
       "How Englishence combines scoring, mock tests, and learner analytics into a focused EdTech product.",
     content: `<p>EdTech products succeed when they feel like the real exam — and then make improvement obvious.</p>
-<p><img src="/portfolio/english-encypte.jpg" alt="Englishence PTE platform homepage" /></p>
 <h2>The product problem</h2>
 <p>PTE candidates need more than static question banks. They need instant scoring, personalized feedback, and a path from weak areas to target scores. That is the foundation we shaped for <a href="https://englishencypte.com/">Englishence</a>.</p>
+<figure>
+<img src="/portfolio/english-encypte.jpg" alt="Englishence PTE platform homepage" />
+<figcaption>Englishence leads with proof metrics and a clear start path for PTE candidates.</figcaption>
+</figure>
 <h2>Core product pillars</h2>
 <ul>
 <li>AI scoring for speaking and writing tasks</li>
@@ -538,9 +544,12 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
     excerpt:
       "How we designed a Bangladesh-first storefront for Thai beauty and tech with trust, speed, and clear merchandising.",
     content: `<p>Global template themes rarely fit local buying behavior. Currency, shipping thresholds, trust signals, and category storytelling all need to feel native.</p>
-<p><img src="/portfolio/priyos-shop.jpg" alt="Priyos Shop homepage screenshot" /></p>
 <h2>What Priyos needed</h2>
 <p><a href="https://priyos.shop/">Priyos Shop</a> sells authentic Thai beauty and trusted gadgets to Bangladesh shoppers. The site had to communicate authenticity quickly, make discovery simple, and reduce checkout anxiety.</p>
+<figure>
+<img src="/portfolio/priyos-shop.jpg" alt="Priyos Shop homepage screenshot" />
+<figcaption>Priyos Shop balances brand storytelling with category discovery for local shoppers.</figcaption>
+</figure>
 <h2>What we prioritized</h2>
 <ul>
 <li>Hero messaging that sells the brand promise in one glance</li>
@@ -565,9 +574,12 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
     excerpt:
       "Lessons from building Clokwork: attendance, idle analytics, screenshot sync, and dashboards remote teams actually use.",
     content: `<p>Remote teams do not need more surveillance theater. They need reliable attendance, clear activity signals, and reports that support payroll and coaching.</p>
-<p><img src="/portfolio/the-clokwork.jpg" alt="Clokwork time tracking homepage screenshot" /></p>
 <h2>What Clokwork focuses on</h2>
 <p><a href="https://theclokwork.com/">Clokwork</a> combines desktop tracking with organization dashboards so admins can see active time, idle time, app usage, and productivity scores — with real-time sync and screenshot monitoring that keeps working even offline.</p>
+<figure>
+<img src="/portfolio/the-clokwork.jpg" alt="Clokwork time tracking homepage screenshot" />
+<figcaption>Clokwork leads with dashboard clarity so buyers can trust the product story immediately.</figcaption>
+</figure>
 <ul>
 <li>Automated attendance and activity capture</li>
 <li>Active vs idle analytics for coaching conversations</li>
@@ -591,9 +603,12 @@ export const seedBlogs: Omit<BlogPost, "_id">[] = [
     excerpt:
       "UX principles from Color N Shape: simplicity, color, motor skills, and joy-first interaction design.",
     content: `<p>Toddler products fail when they look like adult dashboards. They succeed when every interaction feels like play.</p>
-<p><img src="/portfolio/color-n-shapes.jpg" alt="Color N Shape coloring experience" /></p>
 <h2>Principles we used on Color N Shape</h2>
 <p>For <a href="https://colornshapes.com/">Color N Shape</a>, the experience centers on reference images, simple outlines, and an inviting color wheel. Kids learn shapes and colors while practicing focus and hand-eye coordination.</p>
+<figure>
+<img src="/portfolio/color-n-shapes.jpg" alt="Color N Shape coloring experience" />
+<figcaption>Color N Shape keeps chrome minimal so toddlers can stay focused on the canvas.</figcaption>
+</figure>
 <ul>
 <li>Large touch targets and minimal chrome</li>
 <li>Bright, high-contrast visuals</li>
