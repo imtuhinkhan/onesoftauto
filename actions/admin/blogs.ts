@@ -7,6 +7,7 @@ import { Blog } from "@/models/Blog";
 import { connectDB } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/admin/auth";
 import { checkboxValue, commaToArray, toSlug } from "@/lib/admin/parse";
+import { resolveUploadedImage } from "@/lib/admin/resolve-image";
 import type { ActionState } from "@/lib/admin/action-state";
 import mongoose from "mongoose";
 
@@ -20,7 +21,7 @@ const blogSchema = z.object({
     .min(1, "Cover image is required")
     .refine(
       (v) => v.startsWith("/") || v.startsWith("http://") || v.startsWith("https://"),
-      "Cover image must be a path (e.g. /images/cover.jpg) or a full URL"
+      "Cover image must be a path or a full URL"
     ),
   author: z.string().min(1, "Author is required"),
   authorAvatar: z.string().url().optional().or(z.literal("")),
@@ -33,15 +34,28 @@ const blogSchema = z.object({
   seoDescription: z.string().optional(),
 });
 
-function parseBlogForm(formData: FormData) {
+async function parseBlogForm(formData: FormData) {
   const title = String(formData.get("title") ?? "");
   const slugInput = String(formData.get("slug") ?? "");
-  return blogSchema.safeParse({
+  const image = await resolveUploadedImage(formData, {
+    fileField: "coverImageFile",
+    existingField: "coverImage",
+    subdir: "blogs",
+    requiredMessage: "Please upload a cover image",
+  });
+  if ("error" in image) {
+    return {
+      success: false as const,
+      fieldErrors: { coverImage: [image.error] },
+    };
+  }
+
+  const parsed = blogSchema.safeParse({
     title,
     slug: slugInput || toSlug(title),
     excerpt: formData.get("excerpt"),
     content: formData.get("content"),
-    coverImage: formData.get("coverImage"),
+    coverImage: image.url,
     author: formData.get("author"),
     authorAvatar: String(formData.get("authorAvatar") ?? ""),
     category: formData.get("category"),
@@ -52,6 +66,15 @@ function parseBlogForm(formData: FormData) {
     seoTitle: String(formData.get("seoTitle") ?? ""),
     seoDescription: String(formData.get("seoDescription") ?? ""),
   });
+
+  if (!parsed.success) {
+    return {
+      success: false as const,
+      fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]>,
+    };
+  }
+
+  return { success: true as const, data: parsed.data };
 }
 
 function blogPayload(data: z.infer<typeof blogSchema>, withDate = false) {
@@ -80,9 +103,9 @@ export async function createBlog(
 ): Promise<ActionState> {
   try {
     await requireAdmin();
-    const parsed = parseBlogForm(formData);
+    const parsed = await parseBlogForm(formData);
     if (!parsed.success) {
-      return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> };
+      return { fieldErrors: parsed.fieldErrors };
     }
     await connectDB();
     const payload = blogPayload(parsed.data, true);
@@ -105,9 +128,9 @@ export async function updateBlog(
   try {
     await requireAdmin();
     if (!mongoose.Types.ObjectId.isValid(id)) return { error: "Invalid blog ID" };
-    const parsed = parseBlogForm(formData);
+    const parsed = await parseBlogForm(formData);
     if (!parsed.success) {
-      return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> };
+      return { fieldErrors: parsed.fieldErrors };
     }
     await connectDB();
     const payload = blogPayload(parsed.data);

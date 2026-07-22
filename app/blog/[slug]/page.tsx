@@ -62,10 +62,17 @@ export default async function BlogPostPage({
             By {post.author} · {formatDate(post.publishedAt)} · {post.readTime} min read
           </p>
           <div className="relative aspect-[21/9] mt-8 rounded-2xl overflow-hidden">
-            <Image src={post.coverImage} alt={post.title} fill className="object-cover" priority />
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              className="object-cover object-top"
+              priority
+            />
           </div>
           <div
-            className="prose prose-invert max-w-none mt-10 prose-headings:font-display prose-a:text-primary"
+            className="prose prose-invert max-w-none mt-10 prose-headings:font-display prose-a:text-primary prose-img:rounded-xl prose-img:border prose-img:border-border/50"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           <div className="flex flex-wrap gap-2 mt-8">

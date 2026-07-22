@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckboxField, FieldError } from "@/components/admin/form-fields";
+import { ImageUploadField } from "@/components/admin/image-upload-field";
 import type { ActionState } from "@/lib/admin/action-state";
 import { initialActionState } from "@/lib/admin/action-state";
 import type { BlogPost } from "@/types";
@@ -27,7 +28,7 @@ export function BlogForm({ action, blog }: BlogFormProps) {
   return (
     <Card className="glass border-border/50 max-w-3xl">
       <CardContent className="p-6">
-        <form action={formAction} className="space-y-6">
+        <form action={formAction} encType="multipart/form-data" className="space-y-6">
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="space-y-2 sm:col-span-2">
               <Label htmlFor="title">Title *</Label>
@@ -58,18 +59,20 @@ export function BlogForm({ action, blog }: BlogFormProps) {
             <FieldError errors={state.fieldErrors?.content} />
           </div>
 
+          <ImageUploadField
+            id="coverImageFile"
+            name="coverImageFile"
+            label={blog ? "Replace cover image" : "Cover image *"}
+            hint="PNG, JPG, WebP, or SVG up to 5MB."
+            existingUrl={blog?.coverImage}
+            existingFieldName="coverImage"
+            required={!blog}
+            previewClassName="h-40 w-full max-w-none object-cover"
+            previewWrapperClassName="p-0"
+            errors={state.fieldErrors?.coverImage}
+          />
+
           <div className="grid sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="coverImage">Cover image URL or path *</Label>
-              <Input
-                id="coverImage"
-                name="coverImage"
-                defaultValue={blog?.coverImage}
-                placeholder="/images/blog/cover.jpg or https://..."
-                required
-              />
-              <FieldError errors={state.fieldErrors?.coverImage} />
-            </div>
             <div className="space-y-2">
               <Label htmlFor="readTime">Read time (minutes)</Label>
               <Input id="readTime" name="readTime" type="number" min={1} defaultValue={blog?.readTime ?? 5} />
@@ -82,7 +85,7 @@ export function BlogForm({ action, blog }: BlogFormProps) {
               <Label htmlFor="authorAvatar">Author avatar URL</Label>
               <Input id="authorAvatar" name="authorAvatar" type="url" defaultValue={blog?.authorAvatar} />
             </div>
-            <div className="space-y-2 sm:col-span-2">
+            <div className="space-y-2">
               <Label htmlFor="tags">Tags (comma-separated)</Label>
               <Input id="tags" name="tags" defaultValue={blog?.tags?.join(", ")} />
             </div>

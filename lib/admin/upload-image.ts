@@ -16,7 +16,7 @@ const MIME_TO_EXT: Record<string, string> = {
   "image/svg+xml": ".svg",
 };
 
-const MAX_SIZE = 1024 * 1024;
+const MAX_SIZE = 5 * 1024 * 1024;
 
 function extensionFor(file: File): string {
   const fromMime = MIME_TO_EXT[file.type];
@@ -36,7 +36,7 @@ export async function saveUploadedImage(
     throw new Error("No file provided");
   }
   if (file.size > MAX_SIZE) {
-    throw new Error("Image must be under 1MB");
+    throw new Error("Image must be under 5MB");
   }
   if (!ALLOWED_TYPES.has(file.type)) {
     throw new Error("Invalid file type. Use PNG, JPG, WebP, or SVG.");

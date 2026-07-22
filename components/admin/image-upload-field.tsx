@@ -12,8 +12,10 @@ type ImageUploadFieldProps = {
   label: string;
   hint?: string;
   existingUrl?: string;
+  existingFieldName?: string;
   required?: boolean;
   previewClassName?: string;
+  previewWrapperClassName?: string;
   errors?: string[];
 };
 
@@ -23,8 +25,10 @@ export function ImageUploadField({
   label,
   hint,
   existingUrl,
+  existingFieldName = "existingImage",
   required,
   previewClassName,
+  previewWrapperClassName,
   errors,
 }: ImageUploadFieldProps) {
   const [preview, setPreview] = useState<string | null>(existingUrl ?? null);
@@ -52,26 +56,33 @@ export function ImageUploadField({
 
   return (
     <div className="space-y-2">
-      {existingUrl && <input type="hidden" name="logo" value={existingUrl} />}
+      {existingUrl && (
+        <input type="hidden" name={existingFieldName} value={existingUrl} />
+      )}
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
         name={name}
         type="file"
         accept="image/png,image/jpeg,image/webp,image/svg+xml,.svg"
-        required={required}
+        required={required && !existingUrl}
         onChange={onFileChange}
         className="cursor-pointer file:mr-4 file:rounded-md file:border-0 file:bg-primary/10 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary hover:file:bg-primary/20"
       />
       {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
       <FieldError errors={errors} />
       {preview && (
-        <div className="rounded-xl border border-border/50 bg-card/40 p-6 flex items-center justify-center">
+        <div
+          className={cn(
+            "flex items-center justify-center overflow-hidden rounded-xl border border-border/50 bg-card/40 p-4",
+            previewWrapperClassName
+          )}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={preview}
-            alt="Logo preview"
-            className={cn("h-10 w-auto max-w-[180px]", previewClassName)}
+            alt="Upload preview"
+            className={cn("h-10 w-auto max-w-[180px] object-contain", previewClassName)}
           />
         </div>
       )}

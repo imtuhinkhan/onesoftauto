@@ -13,6 +13,7 @@ import {
   parseJsonField,
   toSlug,
 } from "@/lib/admin/parse";
+import { resolveUploadedImage } from "@/lib/admin/resolve-image";
 import type { ActionState } from "@/lib/admin/action-state";
 import mongoose from "mongoose";
 
@@ -23,7 +24,13 @@ const caseStudySchema = z.object({
   category: z.string().min(1, "Category is required"),
   excerpt: z.string().min(1, "Excerpt is required"),
   description: z.string().min(1, "Description is required"),
-  coverImage: z.string().url("Cover image must be a valid URL"),
+  coverImage: z
+    .string()
+    .min(1, "Cover image is required")
+    .refine(
+      (v) => v.startsWith("/") || v.startsWith("http://") || v.startsWith("https://"),
+      "Cover image must be a path or a full URL"
+    ),
   gallery: z.string().optional(),
   technologies: z.string().optional(),
   metricsJson: z.string().optional(),
@@ -32,17 +39,30 @@ const caseStudySchema = z.object({
   published: z.boolean(),
 });
 
-function parseCaseStudyForm(formData: FormData) {
+async function parseCaseStudyForm(formData: FormData) {
   const title = String(formData.get("title") ?? "");
   const slugInput = String(formData.get("slug") ?? "");
-  return caseStudySchema.safeParse({
+  const image = await resolveUploadedImage(formData, {
+    fileField: "coverImageFile",
+    existingField: "coverImage",
+    subdir: "case-studies",
+    requiredMessage: "Please upload a cover image",
+  });
+  if ("error" in image) {
+    return {
+      success: false as const,
+      fieldErrors: { coverImage: [image.error] },
+    };
+  }
+
+  const parsed = caseStudySchema.safeParse({
     title,
     slug: slugInput || toSlug(title),
     client: formData.get("client"),
     category: formData.get("category"),
     excerpt: formData.get("excerpt"),
     description: formData.get("description"),
-    coverImage: formData.get("coverImage"),
+    coverImage: image.url,
     gallery: formData.get("gallery"),
     technologies: formData.get("technologies"),
     metricsJson: formData.get("metricsJson"),
@@ -50,6 +70,15 @@ function parseCaseStudyForm(formData: FormData) {
     featured: checkboxValue(formData.get("featured")),
     published: checkboxValue(formData.get("published")),
   });
+
+  if (!parsed.success) {
+    return {
+      success: false as const,
+      fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]>,
+    };
+  }
+
+  return { success: true as const, data: parsed.data };
 }
 
 function caseStudyPayload(data: z.infer<typeof caseStudySchema>, withDate = false) {
@@ -88,9 +117,9 @@ export async function createCaseStudy(
 ): Promise<ActionState> {
   try {
     await requireAdmin();
-    const parsed = parseCaseStudyForm(formData);
+    const parsed = await parseCaseStudyForm(formData);
     if (!parsed.success) {
-      return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> };
+      return { fieldErrors: parsed.fieldErrors };
     }
     await connectDB();
     const payload = caseStudyPayload(parsed.data, true);
@@ -113,9 +142,9 @@ export async function updateCaseStudy(
   try {
     await requireAdmin();
     if (!mongoose.Types.ObjectId.isValid(id)) return { error: "Invalid case study ID" };
-    const parsed = parseCaseStudyForm(formData);
+    const parsed = await parseCaseStudyForm(formData);
     if (!parsed.success) {
-      return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> };
+      return { fieldErrors: parsed.fieldErrors };
     }
     await connectDB();
     const payload = caseStudyPayload(parsed.data);

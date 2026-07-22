@@ -38,7 +38,7 @@ export function CaseStudyFilterGrid({ caseStudies }: { caseStudies: CaseStudy[] 
       </div>
       <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence mode="popLayout">
-          {filtered.map((study) => (
+          {filtered.map((study, i) => (
             <motion.div
               key={study.slug}
               layout
@@ -54,7 +54,9 @@ export function CaseStudyFilterGrid({ caseStudies }: { caseStudies: CaseStudy[] 
                       src={study.coverImage}
                       alt={study.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={i < 3}
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     <Badge className="absolute top-4 left-4">{study.category}</Badge>
                   </div>

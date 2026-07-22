@@ -38,8 +38,9 @@ export function ClientForm({ action, client }: ClientFormProps) {
             id="logoFile"
             name="logoFile"
             label={client ? "Replace logo" : "Client logo *"}
-            hint="PNG, JPG, WebP, or SVG up to 1MB. Logos display in monochrome on the home page."
+            hint="PNG, JPG, WebP, or SVG up to 5MB. Logos display in monochrome on the home page."
             existingUrl={client?.logo}
+            existingFieldName="logo"
             required={!client}
             previewClassName="client-logo-mono"
             errors={state.fieldErrors?.logo}

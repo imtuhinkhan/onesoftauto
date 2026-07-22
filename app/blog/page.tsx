@@ -41,7 +41,7 @@ export default async function BlogPage() {
             <div>
               <h2 className="font-display text-2xl font-bold mb-8">Featured</h2>
               <div className="grid md:grid-cols-2 gap-8">
-                {featured.map((post) => (
+                {featured.map((post, i) => (
                   <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                     <Card className="overflow-hidden glass border-border/50 h-full hover:shadow-xl transition-all">
                       <div className="relative aspect-[16/9] overflow-hidden">
@@ -49,7 +49,9 @@ export default async function BlogPage() {
                           src={post.coverImage}
                           alt={post.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          priority={i < 2}
+                          className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
                       <CardContent className="p-6">
@@ -79,7 +81,13 @@ export default async function BlogPage() {
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                 <Card className="overflow-hidden glass border-border/50 h-full hover:shadow-lg transition-all">
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image src={post.coverImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform" />
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-top group-hover:scale-105 transition-transform"
+                    />
                   </div>
                   <CardContent className="p-5">
                     <Badge variant="outline" className="mb-2 text-xs">{post.category}</Badge>

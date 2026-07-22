@@ -81,25 +81,25 @@ export function ServicesDropdown({ onNavigate, onOpenChange }: ServicesDropdownP
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute left-1/2 top-full z-50 w-[min(100vw-2rem,42rem)] -translate-x-1/2 pt-2"
           >
-            <div className="glass rounded-2xl border border-border/50 shadow-2xl shadow-primary/10 overflow-hidden">
-              <div className="grid sm:grid-cols-2 gap-0 p-2">
+            <div className="overflow-hidden rounded-2xl border border-border bg-popover text-popover-foreground shadow-xl shadow-black/10 dark:shadow-black/40">
+              <div className="grid gap-0 p-2 sm:grid-cols-2">
                 {SERVICE_NAV_ITEMS.map((item) => (
                   <Link
                     key={item.slug}
                     href={`/services/${item.slug}`}
                     onClick={onNavigate}
-                    className="group flex flex-col gap-0.5 rounded-xl px-4 py-3 hover:bg-primary/10 transition-colors"
+                    className="group flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors hover:bg-accent"
                   >
-                    <span className="text-sm font-medium group-hover:text-primary transition-colors">
+                    <span className="text-sm font-medium transition-colors group-hover:text-primary">
                       {item.title}
                     </span>
-                    <span className="text-xs text-muted-foreground line-clamp-1">
+                    <span className="line-clamp-1 text-xs text-muted-foreground">
                       {item.description}
                     </span>
                   </Link>
                 ))}
               </div>
-              <div className="border-t border-border/50 px-4 py-3 bg-card/50">
+              <div className="border-t border-border bg-muted/40 px-4 py-3">
                 <Link
                   href="/services"
                   onClick={onNavigate}

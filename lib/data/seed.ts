@@ -310,146 +310,166 @@ export const seedServices: Omit<Service, "_id">[] = [
 
 export const seedCaseStudies: Omit<CaseStudy, "_id">[] = [
   {
-    slug: "fintech-dashboard",
-    title: "NovaPay Analytics Dashboard",
-    client: "NovaPay",
-    category: "SaaS",
-    excerpt: "Real-time financial analytics platform serving 50K+ users.",
-    description:
-      "We rebuilt NovaPay's legacy dashboard into a blazing-fast Next.js application with real-time data streaming, custom charting, and role-based access control.",
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    ],
-    metrics: [
-      { label: "Load Time", value: "-68%" },
-      { label: "User Retention", value: "+42%" },
-      { label: "Revenue", value: "+$2.1M" },
-    ],
-    beforeImage: "https://images.unsplash.com/photo-1555421689-491a97ff9880?w=600&q=80",
-    afterImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "D3.js"],
-    testimonial: {
-      quote: "Onesoftauto transformed our product. The new dashboard is night and day.",
-      author: "Sarah Chen",
-      role: "CTO, NovaPay",
-    },
-    timeline: [
-      { phase: "Discovery", description: "Requirements & architecture", date: "Week 1-2" },
-      { phase: "Design", description: "UI/UX & design system", date: "Week 3-5" },
-      { phase: "Development", description: "Core platform build", date: "Week 6-14" },
-      { phase: "Launch", description: "Deploy & optimize", date: "Week 15-16" },
-    ],
-    featured: true,
-    published: true,
-    completedAt: new Date("2025-11-01"),
-  },
-  {
-    slug: "luxury-ecommerce",
-    title: "Maison Élégance Shopify Store",
-    client: "Maison Élégance",
+    slug: "priyos-shop",
+    title: "Priyos Shop — Thai Beauty & Tech Commerce",
+    client: "Priyos Shop",
     category: "E-commerce",
-    excerpt: "Luxury fashion e-commerce with 3x conversion rate improvement.",
+    excerpt:
+      "High-converting storefront for authentic Thai beauty and trusted gadgets, built for Bangladesh shoppers.",
     description:
-      "A headless Shopify storefront with immersive product storytelling, AR try-on, and a seamless checkout experience.",
-    coverImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80",
-    gallery: ["https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80"],
+      "We designed and engineered Priyos Shop (priyos.shop) as a modern e-commerce experience focused on Thai beauty products and consumer tech. The build includes a conversion-led hero, category discovery, promotional merchandising, secure checkout, and logistics messaging tailored to Bangladesh — free shipping thresholds, local currency, and mobile-first browsing.",
+    coverImage: "/portfolio/priyos-shop.jpg",
+    gallery: ["/portfolio/priyos-shop-full.jpg"],
     metrics: [
-      { label: "Conversion Rate", value: "+210%" },
-      { label: "AOV", value: "+35%" },
-      { label: "Page Speed", value: "98/100" },
+      { label: "Market", value: "Bangladesh" },
+      { label: "Catalog Focus", value: "Beauty + Tech" },
+      { label: "Checkout", value: "SSL secure" },
     ],
-    technologies: ["Shopify", "Hydrogen", "React", "Tailwind CSS"],
+    technologies: ["Next.js", "E-commerce", "Tailwind CSS", "Payment Gateway"],
     timeline: [
-      { phase: "Strategy", description: "Brand & catalog planning", date: "Week 1-3" },
-      { phase: "Build", description: "Theme & integrations", date: "Week 4-10" },
-      { phase: "Launch", description: "Go-live & CRO", date: "Week 11-12" },
+      { phase: "Discovery", description: "Brand positioning, catalog structure, and local buyer journeys", date: "Week 1-2" },
+      { phase: "Design", description: "Hero storytelling, category UX, and promotional layouts", date: "Week 3-5" },
+      { phase: "Build", description: "Storefront, cart, checkout, and operations tooling", date: "Week 6-12" },
+      { phase: "Launch", description: "Go-live, performance polish, and campaign readiness", date: "Week 13-14" },
     ],
     featured: true,
     published: true,
-    completedAt: new Date("2025-09-15"),
+    completedAt: new Date("2026-03-01"),
   },
   {
-    slug: "healthcare-app",
-    title: "VitalTrack Mobile App",
-    client: "HealthCore",
-    category: "Mobile",
-    excerpt: "Patient health tracking app with 100K+ downloads.",
+    slug: "englishence-pte",
+    title: "Englishence — AI PTE Practice Platform",
+    client: "Englishence",
+    category: "EdTech / SaaS",
+    excerpt:
+      "AI-powered PTE Academic practice platform with scoring, mock tests, and progress analytics.",
     description:
-      "Cross-platform mobile app for chronic disease management with wearable integration and HIPAA-compliant data handling.",
-    coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80",
-    gallery: [],
+      "Englishence (englishencypte.com) is a full learning product for PTE Academic candidates. We built a conversion-focused marketing site and product funnel around AI scoring, personalized feedback, mock exams, study tools, and subscription plans — helping students practice with real-exam fidelity and track score improvement over time.",
+    coverImage: "/portfolio/english-encypte.jpg",
+    gallery: ["/portfolio/english-encypte-full.jpg"],
     metrics: [
-      { label: "Downloads", value: "100K+" },
-      { label: "App Rating", value: "4.8★" },
-      { label: "Engagement", value: "+65%" },
+      { label: "Success Rate", value: "95%" },
+      { label: "Students", value: "50K+" },
+      { label: "Practice Items", value: "2M+" },
     ],
-    technologies: ["React Native", "Node.js", "MongoDB", "AWS"],
+    technologies: ["Next.js", "AI Scoring", "SaaS Billing", "Analytics"],
     timeline: [
-      { phase: "Discovery", description: "User research & requirements", date: "Week 1-3" },
-      { phase: "Development", description: "Cross-platform build", date: "Week 4-16" },
-      { phase: "Launch", description: "App store release", date: "Week 17-18" },
+      { phase: "Product Strategy", description: "Learner journeys, scoring UX, and monetization", date: "Week 1-3" },
+      { phase: "Platform Build", description: "Practice flows, mock tests, and dashboards", date: "Week 4-14" },
+      { phase: "Growth Layer", description: "Landing pages, blog, and plan conversion paths", date: "Week 15-18" },
     ],
     featured: true,
     published: true,
-    completedAt: new Date("2025-07-20"),
+    completedAt: new Date("2026-02-15"),
   },
   {
-    slug: "ai-support-bot",
-    title: "SupportAI Agent Platform",
-    client: "CloudServe",
-    category: "AI",
-    excerpt: "AI support agent reducing ticket volume by 60%.",
+    slug: "moochatai",
+    title: "MooChatAI — AI Commerce Chat for Stores",
+    client: "MooChatAI",
+    category: "AI / SaaS",
+    excerpt:
+      "Productized AI shopping assistant for WooCommerce and Shopify that turns browsers into buyers.",
     description:
-      "Custom RAG-powered support bot integrated with Zendesk, handling 10K+ queries daily with 94% resolution rate.",
-    coverImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
-    gallery: [],
+      "MooChatAI (moochatai.com) is a SaaS product that embeds an AI shopping assistant into WooCommerce and Shopify stores. We delivered a high-trust marketing site and product narrative covering intelligent product search, in-chat cart actions, abandoned-cart recovery, multilingual support, human handoff, analytics, and pricing — positioned for merchants who need measurable conversion lift without custom AI engineering.",
+    coverImage: "/portfolio/moocha-tai.jpg",
+    gallery: ["/portfolio/moocha-tai-full.jpg"],
     metrics: [
-      { label: "Ticket Reduction", value: "-60%" },
-      { label: "Resolution Rate", value: "94%" },
-      { label: "CSAT", value: "+28%" },
+      { label: "Sales Lift", value: "+32%" },
+      { label: "Languages", value: "90+" },
+      { label: "Setup Time", value: "5 min" },
     ],
-    technologies: ["OpenAI", "LangChain", "Pinecone", "Next.js"],
+    technologies: ["Next.js", "OpenAI", "WooCommerce", "Shopify", "WordPress"],
     timeline: [
-      { phase: "POC", description: "RAG prototype with client data", date: "Week 1-4" },
-      { phase: "Integration", description: "Zendesk & production deploy", date: "Week 5-10" },
-      { phase: "Optimize", description: "Fine-tuning & monitoring", date: "Week 11-12" },
+      { phase: "Positioning", description: "Feature hierarchy, proof points, and competitor framing", date: "Week 1-2" },
+      { phase: "Site & Product Story", description: "Hero demos, feature sections, and pricing UX", date: "Week 3-8" },
+      { phase: "Launch", description: "Conversion QA, SEO, and documentation pathways", date: "Week 9-10" },
+    ],
+    featured: true,
+    published: true,
+    completedAt: new Date("2026-01-20"),
+  },
+  {
+    slug: "the-clokwork",
+    title: "Clokwork — Employee Time Tracking & Productivity",
+    client: "Clokwork",
+    category: "SaaS",
+    excerpt:
+      "Workforce time tracking platform with desktop sync, activity analytics, and productivity dashboards.",
+    description:
+      "Clokwork (theclokwork.com) helps remote and distributed teams automate attendance, monitor active vs idle time, and generate productivity reports. We built a dark, conversion-focused SaaS marketing site around the product story — real-time dashboards, screenshot sync, role-based portals, desktop tracker downloads, and transparent pricing — so organizations can understand the value and get started quickly.",
+    coverImage: "/portfolio/the-clokwork.jpg",
+    gallery: ["/portfolio/the-clokwork-full.jpg"],
+    metrics: [
+      { label: "Countries", value: "35+" },
+      { label: "Tracked Hours", value: "180K+" },
+      { label: "Sync Interval", value: "30s" },
+    ],
+    technologies: ["Next.js", "Desktop Tracker", "Real-time Sync", "Analytics"],
+    timeline: [
+      { phase: "Product Story", description: "Position time tracking, idle analytics, and admin portals", date: "Week 1-2" },
+      { phase: "Design & Build", description: "Hero dashboard preview, features, pricing, and downloads", date: "Week 3-8" },
+      { phase: "Launch", description: "Conversion polish, FAQ trust, and blog content paths", date: "Week 9-10" },
+    ],
+    featured: true,
+    published: true,
+    completedAt: new Date("2025-12-10"),
+  },
+  {
+    slug: "color-n-shapes",
+    title: "Color N Shape — Interactive Learning for Toddlers",
+    client: "Color N Shape",
+    category: "EdTech / Consumer",
+    excerpt:
+      "Playful coloring and shapes web app that helps babies and toddlers learn through creativity.",
+    description:
+      "Color N Shape (colornshapes.com) is a joyful learning product where toddlers explore shapes and colors through interactive drawing. We crafted a simple, bright experience with category discovery, reference-based coloring, an on-canvas palette, and parent-friendly content — designed for focus, motor skills, and early creativity in a safe digital environment.",
+    coverImage: "/portfolio/color-n-shapes.jpg",
+    gallery: ["/portfolio/color-n-shapes-full.jpg"],
+    metrics: [
+      { label: "Audience", value: "Toddlers" },
+      { label: "Learning Focus", value: "Shapes + Color" },
+      { label: "UX Goal", value: "Simple & joyful" },
+    ],
+    technologies: ["Next.js", "Canvas", "Interactive UI", "Content CMS"],
+    timeline: [
+      { phase: "Concept", description: "Child-safe UX principles and activity flows", date: "Week 1-2" },
+      { phase: "Product Build", description: "Canvas coloring, categories, and content library", date: "Week 3-10" },
+      { phase: "Launch", description: "Parent education content and polish", date: "Week 11-12" },
     ],
     featured: false,
     published: true,
-    completedAt: new Date("2025-12-01"),
+    completedAt: new Date("2025-11-05"),
   },
 ];
 
 export const seedTestimonials: Omit<Testimonial, "_id">[] = [
   {
     quote:
-      "Onesoftauto delivered beyond our expectations. Their attention to detail and technical expertise is unmatched in the industry.",
-    author: "Michael Rodriguez",
-    role: "CEO",
-    company: "TechVentures Inc",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
-    rating: 5,
-    published: true,
-  },
-  {
-    quote:
-      "Our SaaS platform went from concept to $1M ARR in 14 months. The Onesoftauto team was instrumental in every milestone.",
-    author: "Emily Watson",
+      "Priyos Shop finally feels like a real brand online — fast, clear, and built for how our customers actually buy.",
+    author: "Operations Lead",
     role: "Founder",
-    company: "FlowStack",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+    company: "Priyos Shop",
+    avatar: "",
     rating: 5,
     published: true,
   },
   {
     quote:
-      "The redesign increased our conversion rate by 210%. ROI was clear within the first month of launch.",
-    author: "James Park",
-    role: "CMO",
-    company: "Maison Élégance",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+      "Englishence’s AI practice experience is exactly what PTE students needed. The product story and platform UX are excellent.",
+    author: "Product Lead",
+    role: "Co-founder",
+    company: "Englishence",
+    avatar: "",
+    rating: 5,
+    published: true,
+  },
+  {
+    quote:
+      "MooChatAI’s site makes the value obvious in seconds. Merchants instantly understand how AI chat recovers carts and lifts sales.",
+    author: "Growth Lead",
+    role: "Founder",
+    company: "MooChatAI",
+    avatar: "",
     rating: 5,
     published: true,
   },
@@ -457,61 +477,148 @@ export const seedTestimonials: Omit<Testimonial, "_id">[] = [
 
 export const seedBlogs: Omit<BlogPost, "_id">[] = [
   {
-    slug: "future-of-ai-in-software-development",
-    title: "The Future of AI in Software Development",
+    slug: "ai-shopping-assistants-that-actually-convert",
+    title: "AI Shopping Assistants That Actually Convert",
     excerpt:
-      "How AI is reshaping how teams build, test, and ship software — and what it means for your business.",
-    content: `<p>Artificial intelligence is no longer a futuristic concept — it's actively transforming how software teams work today.</p><h2>Code Generation</h2><p>Tools like GitHub Copilot and Cursor are accelerating development cycles by 30-50% for routine tasks.</p><h2>Automated Testing</h2><p>AI-powered test generation catches edge cases humans miss, improving quality while reducing QA time.</p><h2>What This Means For You</h2><p>Companies that embrace AI-augmented development ship faster, with fewer bugs and lower costs.</p>`,
-    coverImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
-    author: "Alex Thompson",
+      "Lessons from building MooChatAI: how conversational commerce recovers carts, guides checkout, and lifts revenue.",
+    content: `<p>Most store chat widgets answer FAQs. The ones that move revenue help shoppers find products, compare options, and complete checkout without friction.</p>
+<p><img src="/portfolio/moocha-tai.jpg" alt="MooChatAI marketing site screenshot" /></p>
+<h2>What high-converting AI chat does</h2>
+<p>From our work on <a href="https://www.moochatai.com/">MooChatAI</a>, the winning pattern is clear:</p>
+<ul>
+<li>Natural-language product search across the live catalog</li>
+<li>In-chat cart actions and recommendations</li>
+<li>Abandoned cart recovery with proactive prompts</li>
+<li>Multilingual conversations for international buyers</li>
+<li>Human handoff when the question needs a person</li>
+</ul>
+<h2>Why merchants care</h2>
+<p>When AI chat is connected to catalog, cart, and order data, it stops being a support cost center and becomes a conversion channel. Merchants see faster answers, fewer abandoned carts, and clearer attribution from conversation to purchase.</p>
+<h2>What to build first</h2>
+<p>Start with product discovery and cart recovery. Those two workflows create measurable lift quickly. Layer in order tracking, coupons, and training content once the core loop is proven.</p>`,
+    coverImage: "/portfolio/moocha-tai.jpg",
+    author: "Onesoftauto Team",
     category: "AI",
-    tags: ["AI", "Development", "Future"],
+    tags: ["AI", "E-commerce", "Conversion", "SaaS"],
     featured: true,
     published: true,
-    publishedAt: new Date("2026-05-01"),
+    publishedAt: new Date("2026-06-10"),
+    readTime: 7,
+  },
+  {
+    slug: "building-an-ai-powered-pte-practice-platform",
+    title: "Building an AI-Powered PTE Practice Platform",
+    excerpt:
+      "How Englishence combines scoring, mock tests, and learner analytics into a focused EdTech product.",
+    content: `<p>EdTech products succeed when they feel like the real exam — and then make improvement obvious.</p>
+<p><img src="/portfolio/english-encypte.jpg" alt="Englishence PTE platform homepage" /></p>
+<h2>The product problem</h2>
+<p>PTE candidates need more than static question banks. They need instant scoring, personalized feedback, and a path from weak areas to target scores. That is the foundation we shaped for <a href="https://englishencypte.com/">Englishence</a>.</p>
+<h2>Core product pillars</h2>
+<ul>
+<li>AI scoring for speaking and writing tasks</li>
+<li>Full-length mock tests that mirror exam pressure</li>
+<li>Progress analytics so learners see what improved</li>
+<li>Clear trial and pricing conversion on the marketing site</li>
+</ul>
+<h2>Design takeaway</h2>
+<p>For learning products, trust is UI. Clean hierarchy, proof metrics, and a frictionless start path matter as much as the model quality behind the scenes.</p>`,
+    coverImage: "/portfolio/english-encypte.jpg",
+    author: "Onesoftauto Team",
+    category: "EdTech",
+    tags: ["EdTech", "AI", "SaaS", "Product"],
+    featured: true,
+    published: true,
+    publishedAt: new Date("2026-05-28"),
     readTime: 6,
   },
   {
-    slug: "saas-mvp-guide-2026",
-    title: "The Complete Guide to Building a SaaS MVP in 2026",
+    slug: "ecommerce-for-local-markets-priyos-shop",
+    title: "E-commerce for Local Markets: Lessons from Priyos Shop",
     excerpt:
-      "A step-by-step playbook for launching your SaaS product in 8-12 weeks without overbuilding.",
-    content: `<p>Building an MVP doesn't mean cutting corners — it means focusing ruthlessly on what validates your idea.</p><h2>Step 1: Define Your Core Loop</h2><p>Identify the single workflow that delivers value. Everything else is v2.</p><h2>Step 2: Choose Your Stack</h2><p>Next.js + PostgreSQL + Stripe remains the gold standard for B2B SaaS in 2026.</p>`,
-    coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
-    author: "Sarah Kim",
-    category: "SaaS",
-    tags: ["SaaS", "MVP", "Startup"],
+      "How we designed a Bangladesh-first storefront for Thai beauty and tech with trust, speed, and clear merchandising.",
+    content: `<p>Global template themes rarely fit local buying behavior. Currency, shipping thresholds, trust signals, and category storytelling all need to feel native.</p>
+<p><img src="/portfolio/priyos-shop.jpg" alt="Priyos Shop homepage screenshot" /></p>
+<h2>What Priyos needed</h2>
+<p><a href="https://priyos.shop/">Priyos Shop</a> sells authentic Thai beauty and trusted gadgets to Bangladesh shoppers. The site had to communicate authenticity quickly, make discovery simple, and reduce checkout anxiety.</p>
+<h2>What we prioritized</h2>
+<ul>
+<li>Hero messaging that sells the brand promise in one glance</li>
+<li>Category entry points for beauty and electronics</li>
+<li>Local logistics cues like free shipping thresholds</li>
+<li>Mobile-first browsing and secure payment confidence</li>
+</ul>
+<h2>Result</h2>
+<p>A storefront that feels premium without becoming complicated — and that is tuned for the market it actually serves.</p>`,
+    coverImage: "/portfolio/priyos-shop.jpg",
+    author: "Onesoftauto Team",
+    category: "E-commerce",
+    tags: ["E-commerce", "UX", "Local Markets"],
     featured: true,
     published: true,
-    publishedAt: new Date("2026-04-15"),
-    readTime: 8,
+    publishedAt: new Date("2026-05-12"),
+    readTime: 5,
   },
   {
-    slug: "web-performance-optimization",
-    title: "Web Performance Optimization: A Technical Deep Dive",
+    slug: "employee-time-tracking-that-remote-teams-trust",
+    title: "Employee Time Tracking That Remote Teams Trust",
     excerpt:
-      "Practical techniques to achieve 95+ Lighthouse scores and sub-second load times.",
-    content: `<p>Performance is a feature. Slow sites lose users, rankings, and revenue.</p><h2>Core Web Vitals</h2><p>LCP, FID, and CLS are now ranking factors. Here's how to optimize each.</p>`,
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-    author: "David Chen",
-    category: "Development",
-    tags: ["Performance", "Next.js", "SEO"],
+      "Lessons from building Clokwork: attendance, idle analytics, screenshot sync, and dashboards remote teams actually use.",
+    content: `<p>Remote teams do not need more surveillance theater. They need reliable attendance, clear activity signals, and reports that support payroll and coaching.</p>
+<p><img src="/portfolio/the-clokwork.jpg" alt="Clokwork time tracking homepage screenshot" /></p>
+<h2>What Clokwork focuses on</h2>
+<p><a href="https://theclokwork.com/">Clokwork</a> combines desktop tracking with organization dashboards so admins can see active time, idle time, app usage, and productivity scores — with real-time sync and screenshot monitoring that keeps working even offline.</p>
+<ul>
+<li>Automated attendance and activity capture</li>
+<li>Active vs idle analytics for coaching conversations</li>
+<li>Role-based portals for admins and employees</li>
+<li>CSV exports for payroll and audit workflows</li>
+</ul>
+<h2>Product storytelling tip</h2>
+<p>For workforce tools, show the dashboard early. Buyers need to see tracked hours, live activity, and sync reliability before they trust the pitch.</p>`,
+    coverImage: "/portfolio/the-clokwork.jpg",
+    author: "Onesoftauto Team",
+    category: "SaaS",
+    tags: ["SaaS", "Productivity", "Remote Work"],
     featured: false,
     published: true,
-    publishedAt: new Date("2026-03-20"),
-    readTime: 10,
+    publishedAt: new Date("2026-04-22"),
+    readTime: 5,
+  },
+  {
+    slug: "designing-playful-learning-apps-for-toddlers",
+    title: "Designing Playful Learning Apps for Toddlers",
+    excerpt:
+      "UX principles from Color N Shape: simplicity, color, motor skills, and joy-first interaction design.",
+    content: `<p>Toddler products fail when they look like adult dashboards. They succeed when every interaction feels like play.</p>
+<p><img src="/portfolio/color-n-shapes.jpg" alt="Color N Shape coloring experience" /></p>
+<h2>Principles we used on Color N Shape</h2>
+<p>For <a href="https://colornshapes.com/">Color N Shape</a>, the experience centers on reference images, simple outlines, and an inviting color wheel. Kids learn shapes and colors while practicing focus and hand-eye coordination.</p>
+<ul>
+<li>Large touch targets and minimal chrome</li>
+<li>Bright, high-contrast visuals</li>
+<li>Immediate feedback from coloring actions</li>
+<li>Category discovery that feels like exploration</li>
+</ul>
+<h2>For parents and product teams</h2>
+<p>The best early-learning apps hide complexity. Keep the canvas joyful, keep instructions visual, and let learning emerge from play rather than lectures.</p>`,
+    coverImage: "/portfolio/color-n-shapes.jpg",
+    author: "Onesoftauto Team",
+    category: "Product Design",
+    tags: ["EdTech", "UX", "Kids Apps"],
+    featured: false,
+    published: true,
+    publishedAt: new Date("2026-04-05"),
+    readTime: 5,
   },
 ];
 
 export const clientLogos: { name: string; logo: string }[] = [
-  { name: "NovaPay", logo: "/clients/novapay.svg" },
-  { name: "FlowStack", logo: "/clients/flowstack.svg" },
-  { name: "HealthCore", logo: "/clients/healthcore.svg" },
-  { name: "CloudServe", logo: "/clients/cloudserve.svg" },
-  { name: "Maison Élégance", logo: "/clients/maison-elegance.svg" },
-  { name: "TechVentures", logo: "/clients/techventures.svg" },
-  { name: "DataPulse", logo: "/clients/datapulse.svg" },
-  { name: "GreenLeaf", logo: "/clients/greenleaf.svg" },
+  { name: "Priyos Shop", logo: "/clients/priyos.svg" },
+  { name: "Englishence", logo: "/clients/englishence.svg" },
+  { name: "MooChatAI", logo: "/clients/moochatai.svg" },
+  { name: "Clokwork", logo: "/clients/the-clokwork.svg" },
+  { name: "Color N Shape", logo: "/clients/colornshapes.svg" },
 ];
 
 export const agencyStats = [

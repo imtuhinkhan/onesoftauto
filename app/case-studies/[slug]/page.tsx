@@ -51,7 +51,14 @@ export default async function CaseStudyDetailPage({
           <h1 className="font-display text-4xl sm:text-5xl font-bold max-w-4xl">{study.title}</h1>
           <p className="mt-4 text-xl text-muted-foreground">{study.client}</p>
           <div className="relative aspect-[21/9] mt-10 rounded-2xl overflow-hidden">
-            <Image src={study.coverImage} alt={study.title} fill className="object-cover" priority />
+            <Image
+              src={study.coverImage}
+              alt={study.title}
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              className="object-cover object-top"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -80,13 +87,25 @@ export default async function CaseStudyDetailPage({
                 <div>
                   <p className="text-sm font-medium mb-2">Before</p>
                   <div className="relative aspect-video rounded-xl overflow-hidden">
-                    <Image src={study.beforeImage} alt="Before" fill className="object-cover" />
+                    <Image
+                      src={study.beforeImage}
+                      alt="Before"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
                 <div>
                   <p className="text-sm font-medium mb-2">After</p>
                   <div className="relative aspect-video rounded-xl overflow-hidden">
-                    <Image src={study.afterImage} alt="After" fill className="object-cover" />
+                    <Image
+                      src={study.afterImage}
+                      alt="After"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </div>
@@ -95,7 +114,13 @@ export default async function CaseStudyDetailPage({
               <div className="grid md:grid-cols-2 gap-4 my-10 not-prose">
                 {study.gallery.map((img, i) => (
                   <div key={i} className="relative aspect-video rounded-xl overflow-hidden">
-                    <Image src={img} alt="" fill className="object-cover" />
+                    <Image
+                      src={img}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover object-top"
+                    />
                   </div>
                 ))}
               </div>
