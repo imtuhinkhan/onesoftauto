@@ -113,6 +113,70 @@ export function CaseStudyForm({ action, caseStudy }: CaseStudyFormProps) {
             />
           </div>
 
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="tintKey">Tint key</Label>
+              <Input
+                id="tintKey"
+                name="tintKey"
+                defaultValue={caseStudy?.tintKey}
+                placeholder="priyos, englishence, …"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="mockup">Mockup</Label>
+              <Input
+                id="mockup"
+                name="mockup"
+                defaultValue={caseStudy?.mockup}
+                placeholder="shop, score, chat, dash, canvas"
+              />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="liveUrl">Live URL</Label>
+              <Input id="liveUrl" name="liveUrl" type="url" defaultValue={caseStudy?.liveUrl} />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="servicesLabel">Services label</Label>
+              <Input id="servicesLabel" name="servicesLabel" defaultValue={caseStudy?.servicesLabel} />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="stackLabel">Stack label</Label>
+              <Input id="stackLabel" name="stackLabel" defaultValue={caseStudy?.stackLabel} />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="timelineLabel">Timeline label</Label>
+              <Input id="timelineLabel" name="timelineLabel" defaultValue={caseStudy?.timelineLabel} />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="brief">Brief</Label>
+            <Textarea id="brief" name="brief" rows={4} defaultValue={caseStudy?.brief} />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="builtItems">What we built (one per line)</Label>
+            <Textarea
+              id="builtItems"
+              name="builtItems"
+              rows={4}
+              defaultValue={caseStudy?.builtItems?.join("\n")}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="howItRanJson">How it ran (JSON)</Label>
+            <Textarea
+              id="howItRanJson"
+              name="howItRanJson"
+              rows={4}
+              className="font-mono text-xs"
+              defaultValue={JSON.stringify(caseStudy?.howItRan ?? [], null, 2)}
+              placeholder='[{"title":"Weeks 1–2 · Discovery","body":"…"}]'
+            />
+          </div>
+
           <div className="flex flex-wrap gap-6">
             <CheckboxField id="featured" name="featured" label="Featured" defaultChecked={caseStudy?.featured} />
             <CheckboxField

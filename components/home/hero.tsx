@@ -1,57 +1,73 @@
-"use client";
-
-import dynamic from "next/dynamic";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { GradientBlob } from "@/components/shared/gradient-blob";
 
-const HeroIllustration = dynamic(
-  () => import("@/components/home/hero-illustration").then((m) => m.HeroIllustration),
-  {
-    ssr: false,
-    loading: () => <div className="relative hidden lg:block aspect-square w-full max-w-lg mx-auto" />,
-  }
-);
+const CALENDLY = "https://calendly.com/onesoftauto/30min";
 
-export function Hero() {
+export function Hero2({
+  eyebrow = "Product studio · Dhaka",
+  headline = "We build digital products that",
+  headlineAccent = "transform businesses.",
+  subcopy = "From stunning websites to AI-powered SaaS platforms, we craft software that drives growth and measurable results.",
+  calendlyUrl = CALENDLY,
+}: {
+  eyebrow?: string;
+  headline?: string;
+  headlineAccent?: string;
+  subcopy?: string;
+  calendlyUrl?: string;
+}) {
   return (
-    <section className="relative overflow-hidden pt-20 pb-4 lg:pb-6">
-      <GradientBlob />
-      <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight">
-              We Build <span className="gradient-text">Digital Products</span> That Transform Businesses
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              From stunning websites to AI-powered SaaS platforms — we craft premium software experiences that drive growth and measurable ROI.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button variant="gradient" size="lg" asChild>
-                <Link href="/contact">Book a Call <ArrowRight className="h-5 w-5" /></Link>
-              </Button>
-              <Button variant="glass" size="lg" asChild>
-                <Link href="/services"><Play className="h-4 w-4" /> View Services</Link>
-              </Button>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden lg:block"
-          >
-            <HeroIllustration />
-          </motion.div>
+    <div className="hero2">
+      <div>
+        <p className="label" style={{ margin: "0 0 20px" }}>
+          {eyebrow}
+        </p>
+        <h1>
+          {headline} <span>{headlineAccent}</span>
+        </h1>
+        <p>{subcopy}</p>
+        <div className="ctas">
+          <a className="btn btn-primary" href={calendlyUrl}>
+            Book a call <span className="arr">→</span>
+          </a>
+          <Link className="btn btn-ghost" href="#work">
+            See work
+          </Link>
         </div>
       </div>
-    </section>
+      <div className="orb" aria-hidden="true">
+        <div className="glow" />
+        <div className="tilt">
+          <svg viewBox="0 0 200 200" fill="none">
+            <defs>
+              <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#16D2E6" />
+                <stop offset="1" stopColor="#2447FF" />
+              </linearGradient>
+            </defs>
+            <circle
+              cx="100"
+              cy="100"
+              r="96"
+              stroke="url(#og)"
+              strokeWidth="1.2"
+              strokeDasharray="2 6"
+            />
+          </svg>
+          <svg className="r2" viewBox="0 0 200 200" fill="none">
+            <circle
+              cx="100"
+              cy="100"
+              r="84"
+              stroke="url(#og)"
+              strokeWidth="1.5"
+              strokeDasharray="120 408"
+              strokeLinecap="round"
+            />
+          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/orb.png" alt="" />
+        </div>
+      </div>
+    </div>
   );
 }

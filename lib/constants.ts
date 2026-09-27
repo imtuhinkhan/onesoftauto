@@ -1,8 +1,8 @@
 export const SITE_NAME = "Onesoftauto";
 
 export const BRAND = {
-  logoDark: "/logo/logo-dark.png",
-  logoWhite: "/logo/logo-white.png",
+  logoDark: "/brand/logo-dark.png",
+  logoWhite: "/brand/logo-light.png",
   favicon: "/logo/favicon.png",
 } as const;
 export const SITE_EMAIL = "hello@onesoftauto.com";
@@ -11,11 +11,10 @@ export const SITE_DESCRIPTION =
   "Onesoftauto crafts web apps, SaaS products, mobile experiences, and AI-powered solutions for ambitious brands.";
 
 export const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/case-studies", label: "Case Studies" },
+  { href: "/work", label: "Work" },
+  { href: "/#services", label: "Services" },
   { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const SERVICE_NAV_ITEMS = [

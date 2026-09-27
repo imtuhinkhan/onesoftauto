@@ -15,6 +15,7 @@ import {
   Cog,
   ExternalLink,
   Building2,
+  CircleHelp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,7 @@ const links = [
   { href: "/admin/case-studies", label: "Case Studies", icon: Briefcase },
   { href: "/admin/services", label: "Services", icon: Layers },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
+  { href: "/admin/faqs", label: "FAQs", icon: CircleHelp },
   { href: "/admin/clients", label: "Clients", icon: Building2 },
   { href: "/admin/leads", label: "Leads", icon: Mail },
   { href: "/admin/settings", label: "Site Settings", icon: Cog },

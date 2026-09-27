@@ -1,93 +1,99 @@
 import Link from "next/link";
-import { Share2, Globe, Mail, MapPin, Link2 } from "lucide-react";
-import { SITE_NAME, SITE_EMAIL, NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
-import { SiteLogo } from "@/components/layout/site-logo";
-
-const iconMap = {
-  twitter: Share2,
-  linkedin: Link2,
-  github: Globe,
-  dribbble: Share2,
-};
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-card/30">
-      <div className="container-custom section-padding pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="space-y-4">
-            <SiteLogo href="/" size="md" />
-            <p className="text-sm text-muted-foreground max-w-xs">
-              Premium software agency crafting digital experiences that drive growth and innovation.
-            </p>
-            <div className="flex gap-3">
-              {SOCIAL_LINKS.map((social) => {
-                const Icon = iconMap[social.icon as keyof typeof iconMap] ?? Globe;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-9 w-9 rounded-lg glass flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={social.label}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/services/web-design-development" className="hover:text-primary">Web Development</Link></li>
-              <li><Link href="/services/saas-product-development" className="hover:text-primary">SaaS Products</Link></li>
-              <li><Link href="/services/mobile-app-development" className="hover:text-primary">Mobile Apps</Link></li>
-              <li><Link href="/services/ai-integrations" className="hover:text-primary">AI Solutions</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-primary shrink-0" />
-                {SITE_EMAIL}
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                Dhaka, Bangladesh
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} {SITE_NAME}. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:text-primary">Privacy</Link>
-            <Link href="#" className="hover:text-primary">Terms</Link>
-          </div>
-        </div>
+    <footer className="foot3">
+      <div>
+        <Link className="brand" href="/" aria-label="Onesoftauto home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="logo-img logo-on-light"
+            src="/brand/logo-light.png"
+            alt="Onesoftauto"
+            width={182}
+            height={32}
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="logo-img logo-on-dark"
+            src="/brand/logo-dark.png"
+            alt="Onesoftauto"
+            width={182}
+            height={32}
+          />
+        </Link>
+        <p>
+          Product studio in Dhaka building web, SaaS, mobile and AI products.
+        </p>
       </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li>
+            <Link href="/work">Work</Link>
+          </li>
+          <li>
+            <Link href="/#services">Services</Link>
+          </li>
+          <li>
+            <Link href="/#process">Process</Link>
+          </li>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link href="/faq">FAQ</Link>
+          </li>
+          <li>
+            <Link href="/#contact">Contact</Link>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4>Case studies</h4>
+        <ul>
+          <li>
+            <Link href="/case-studies/priyos-shop">Priyos Shop</Link>
+          </li>
+          <li>
+            <Link href="/case-studies/englishence">Englishence</Link>
+          </li>
+          <li>
+            <Link href="/case-studies/moochatai">MooChatAI</Link>
+          </li>
+          <li>
+            <Link href="/case-studies/clokwork">Clokwork</Link>
+          </li>
+          <li>
+            <Link href="/case-studies/color-n-shape">Color N Shape</Link>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>
+            <a href="https://calendly.com/onesoftauto/30min">Book a call</a>
+          </li>
+          <li>
+            <Link href="/welcome-to-osa">WhatsApp</Link>
+          </li>
+          <li>
+            <a href="https://linkedin.com" rel="noreferrer" target="_blank">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com" rel="noreferrer" target="_blank">
+              GitHub
+            </a>
+          </li>
+        </ul>
+      </div>
+      <small>
+        <span>© {new Date().getFullYear()} Onesoftauto · Dhaka, Bangladesh</span>
+        <span>Privacy · Terms</span>
+      </small>
     </footer>
   );
 }

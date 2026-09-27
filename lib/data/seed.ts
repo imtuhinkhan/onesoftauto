@@ -1,4 +1,4 @@
-import type { Service, BlogPost, CaseStudy, Testimonial } from "@/types";
+import type { Service, BlogPost, CaseStudy, Testimonial, Faq } from "@/types";
 
 export const seedServices: Omit<Service, "_id">[] = [
   {
@@ -29,6 +29,9 @@ export const seedServices: Omit<Service, "_id">[] = [
       { question: "How long does a website take?", answer: "Typically 6–12 weeks depending on scope." },
       { question: "Do you provide hosting?", answer: "Yes, we deploy on Vercel, AWS, or your preferred platform." },
     ],
+    group: "Web & design",
+    groupOrder: 1,
+    groupDescription: "Sites and interfaces people enjoy using.",
     order: 1,
     published: true,
   },
@@ -59,6 +62,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     faqs: [
       { question: "Can you work with existing code?", answer: "Absolutely — we audit and extend existing codebases." },
     ],
+    group: "SaaS & AI",
+    groupOrder: 3,
+    groupDescription: "Products that scale, with intelligence built in.",
     order: 2,
     published: true,
   },
@@ -85,6 +91,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "Commerce & mobile",
+    groupOrder: 2,
+    groupDescription: "Stores and apps built for how your customers buy.",
     order: 3,
     published: true,
   },
@@ -111,6 +120,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "Commerce & mobile",
+    groupOrder: 2,
+    groupDescription: "Stores and apps built for how your customers buy.",
     order: 4,
     published: true,
   },
@@ -137,6 +149,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "Automation & growth",
+    groupOrder: 5,
+    groupDescription: "Less busywork, more of the right customers.",
     order: 5,
     published: true,
   },
@@ -163,6 +178,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "SaaS & AI",
+    groupOrder: 3,
+    groupDescription: "Products that scale, with intelligence built in.",
     order: 6,
     published: true,
   },
@@ -189,6 +207,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "Automation & growth",
+    groupOrder: 5,
+    groupDescription: "Less busywork, more of the right customers.",
     order: 7,
     published: true,
   },
@@ -215,6 +236,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "Web & design",
+    groupOrder: 1,
+    groupDescription: "Sites and interfaces people enjoy using.",
     order: 8,
     published: true,
   },
@@ -245,6 +269,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     faqs: [
       { question: "Do you work with existing WordPress sites?", answer: "Yes — we audit, optimize, and extend existing installations." },
     ],
+    group: "Web & design",
+    groupOrder: 1,
+    groupDescription: "Sites and interfaces people enjoy using.",
     order: 9,
     published: true,
   },
@@ -273,6 +300,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     ],
     pricingTeaser: "",
     faqs: [],
+    group: "Network & security",
+    groupOrder: 4,
+    groupDescription: "Reliable networks and systems you can trust.",
     order: 10,
     published: true,
   },
@@ -303,6 +333,9 @@ export const seedServices: Omit<Service, "_id">[] = [
     faqs: [
       { question: "How often should we run security audits?", answer: "We recommend quarterly scans with annual penetration tests for most businesses." },
     ],
+    group: "Network & security",
+    groupOrder: 4,
+    groupDescription: "Reliable networks and systems you can trust.",
     order: 11,
     published: true,
   },
@@ -311,13 +344,13 @@ export const seedServices: Omit<Service, "_id">[] = [
 export const seedCaseStudies: Omit<CaseStudy, "_id">[] = [
   {
     slug: "priyos-shop",
-    title: "Priyos Shop — Thai Beauty & Tech Commerce",
+    title: "Priyos Shop",
     client: "Priyos Shop",
     category: "E-commerce",
     excerpt:
-      "High-converting storefront for authentic Thai beauty and trusted gadgets, built for Bangladesh shoppers.",
+      "High-converting storefront for authentic Thai beauty and trusted gadgets, built for shoppers in Bangladesh.",
     description:
-      "We designed and engineered Priyos Shop (priyos.shop) as a modern e-commerce experience focused on Thai beauty products and consumer tech. The build includes a conversion-led hero, category discovery, promotional merchandising, secure checkout, and logistics messaging tailored to Bangladesh — free shipping thresholds, local currency, and mobile-first browsing.",
+      "We designed and engineered Priyos Shop as a modern e-commerce experience focused on Thai beauty products and consumer tech — conversion-led hero, category discovery, secure checkout, and logistics messaging tailored to Bangladesh.",
     coverImage: "/portfolio/priyos-shop.jpg",
     gallery: ["/portfolio/priyos-shop-full.jpg"],
     metrics: [
@@ -325,38 +358,92 @@ export const seedCaseStudies: Omit<CaseStudy, "_id">[] = [
       { label: "Catalog Focus", value: "Beauty + Tech" },
       { label: "Checkout", value: "SSL secure" },
     ],
-    technologies: ["Next.js", "E-commerce", "Tailwind CSS", "Payment Gateway"],
-    timeline: [
-      { phase: "Discovery", description: "Brand positioning, catalog structure, and local buyer journeys", date: "Week 1-2" },
-      { phase: "Design", description: "Hero storytelling, category UX, and promotional layouts", date: "Week 3-5" },
-      { phase: "Build", description: "Storefront, cart, checkout, and operations tooling", date: "Week 6-12" },
-      { phase: "Launch", description: "Go-live, performance polish, and campaign readiness", date: "Week 13-14" },
+    technologies: ["Next.js", "Tailwind CSS", "E-commerce", "Payment Gateway"],
+    timeline: [],
+    tintKey: "priyos",
+    liveUrl: "https://priyos.shop",
+    mockup: "shop",
+    servicesLabel: "Storefront design and development, UX optimisation",
+    stackLabel: "Next.js, Tailwind CSS, SSL checkout",
+    timelineLabel: "14 weeks · priyos.shop",
+    brief:
+      "Priyos Shop sells authentic Thai beauty products and trusted gadgets to shoppers in Bangladesh. Global template themes rarely fit local buying behaviour, so the store had to communicate authenticity quickly, make discovery simple and reduce checkout anxiety.",
+    builtItems: [
+      "Conversion-focused hero that sells the brand promise at a glance",
+      "Category entry points for beauty and electronics",
+      "Promotional merchandising layouts",
+      "Secure SSL checkout",
+      "Local logistics cues: currency and free-shipping thresholds",
+      "Mobile-first browsing throughout",
+    ],
+    howItRan: [
+      {
+        title: "Weeks 1–2 · Discovery",
+        body: "Brand positioning, catalogue structure and local buyer-journey mapping.",
+      },
+      {
+        title: "Weeks 3–5 · Design",
+        body: "Hero storytelling, category UX and promotional layouts.",
+      },
+      {
+        title: "Weeks 6–12 · Build",
+        body: "Storefront, cart, checkout and operations tooling.",
+      },
+      {
+        title: "Weeks 13–14 · Launch",
+        body: "Go-live, performance tuning and campaign preparation.",
+      },
     ],
     featured: true,
     published: true,
     completedAt: new Date("2026-03-01"),
   },
   {
-    slug: "englishence-pte",
-    title: "Englishence — AI PTE Practice Platform",
+    slug: "englishence",
+    title: "Englishence",
     client: "Englishence",
-    category: "EdTech / SaaS",
+    category: "EdTech · SaaS",
     excerpt:
-      "AI-powered PTE Academic practice platform with scoring, mock tests, and progress analytics.",
+      "AI-powered PTE Academic practice platform with scoring, mock tests and progress analytics.",
     description:
-      "Englishence (englishencypte.com) is a full learning product for PTE Academic candidates. We built a conversion-focused marketing site and product funnel around AI scoring, personalized feedback, mock exams, study tools, and subscription plans — helping students practice with real-exam fidelity and track score improvement over time.",
+      "Englishence is a full learning product for PTE Academic candidates — AI scoring, mock tests, study tools, and subscription billing with a conversion-focused marketing site.",
     coverImage: "/portfolio/english-encypte.jpg",
     gallery: ["/portfolio/english-encypte-full.jpg"],
     metrics: [
-      { label: "Success Rate", value: "95%" },
+      { label: "Success rate", value: "95%" },
       { label: "Students", value: "50K+" },
-      { label: "Practice Items", value: "2M+" },
+      { label: "Practice items", value: "2M+" },
     ],
-    technologies: ["Next.js", "AI Scoring", "SaaS Billing", "Analytics"],
-    timeline: [
-      { phase: "Product Strategy", description: "Learner journeys, scoring UX, and monetization", date: "Week 1-3" },
-      { phase: "Platform Build", description: "Practice flows, mock tests, and dashboards", date: "Week 4-14" },
-      { phase: "Growth Layer", description: "Landing pages, blog, and plan conversion paths", date: "Week 15-18" },
+    technologies: ["Next.js", "AI scoring", "SaaS billing", "Analytics"],
+    timeline: [],
+    tintKey: "englishence",
+    liveUrl: "https://englishencypte.com",
+    mockup: "score",
+    servicesLabel: "SaaS product development, Marketing site",
+    stackLabel: "Next.js, AI scoring, SaaS billing",
+    timelineLabel: "18 weeks",
+    brief:
+      "PTE candidates need more than static question banks. They need instant scoring, personalised feedback and a clear path from weak areas to their target score. Englishence needed a learning product with real-exam fidelity, plus conversion-focused marketing to bring learners in.",
+    builtItems: [
+      "AI scoring for speaking and writing tasks",
+      "Personalised feedback on every attempt",
+      "Full-length mock tests that mirror exam pressure",
+      "Study tools and progress tracking",
+      "Subscription billing and a clear trial-to-paid path",
+    ],
+    howItRan: [
+      {
+        title: "Weeks 1–3 · Product strategy",
+        body: "Learner journeys, scoring UX and monetisation planning.",
+      },
+      {
+        title: "Weeks 4–14 · Platform build",
+        body: "Practice flows, mock tests and learner dashboards.",
+      },
+      {
+        title: "Weeks 15–18 · Growth layer",
+        body: "Landing pages, blog and conversion optimisation.",
+      },
     ],
     featured: true,
     published: true,
@@ -364,79 +451,156 @@ export const seedCaseStudies: Omit<CaseStudy, "_id">[] = [
   },
   {
     slug: "moochatai",
-    title: "MooChatAI — AI Commerce Chat for Stores",
+    title: "MooChatAI",
     client: "MooChatAI",
-    category: "AI / SaaS",
+    category: "AI · SaaS",
     excerpt:
-      "Productized AI shopping assistant for WooCommerce and Shopify that turns browsers into buyers.",
+      "A SaaS platform that embeds an AI shopping assistant into WooCommerce and Shopify stores.",
     description:
-      "MooChatAI (moochatai.com) is a SaaS product that embeds an AI shopping assistant into WooCommerce and Shopify stores. We delivered a high-trust marketing site and product narrative covering intelligent product search, in-chat cart actions, abandoned-cart recovery, multilingual support, human handoff, analytics, and pricing — positioned for merchants who need measurable conversion lift without custom AI engineering.",
+      "MooChatAI connects conversational AI to live catalogues, carts, and orders so merchants get measurable conversion lift without building custom AI engineering in-house.",
     coverImage: "/portfolio/moocha-tai.jpg",
     gallery: ["/portfolio/moocha-tai-full.jpg"],
     metrics: [
-      { label: "Sales Lift", value: "+32%" },
+      { label: "Sales lift", value: "32%" },
+      { label: "Setup time", value: "5 min" },
       { label: "Languages", value: "90+" },
-      { label: "Setup Time", value: "5 min" },
     ],
-    technologies: ["Next.js", "OpenAI", "WooCommerce", "Shopify", "WordPress"],
-    timeline: [
-      { phase: "Positioning", description: "Feature hierarchy, proof points, and competitor framing", date: "Week 1-2" },
-      { phase: "Site & Product Story", description: "Hero demos, feature sections, and pricing UX", date: "Week 3-8" },
-      { phase: "Launch", description: "Conversion QA, SEO, and documentation pathways", date: "Week 9-10" },
+    technologies: ["Next.js", "OpenAI", "WooCommerce", "Shopify"],
+    timeline: [],
+    tintKey: "moochatai",
+    liveUrl: "https://www.moochatai.com",
+    mockup: "chat",
+    servicesLabel: "Marketing site development, Product narrative and positioning",
+    stackLabel: "Next.js, OpenAI, WooCommerce",
+    timelineLabel: "10 weeks · moochatai.com",
+    brief:
+      "Merchants want measurable conversion gains without hiring an AI team. MooChatAI connects chat to the live catalogue, cart and orders, so the assistant stops being a support cost and becomes a sales channel. The product needed a high-trust site that told that story clearly.",
+    builtItems: [
+      "Natural-language product search across the live catalogue",
+      "In-chat cart actions and recommendations",
+      "Abandoned-cart recovery with proactive prompts",
+      "Multilingual conversations in 90+ languages",
+      "Human handoff when a question needs a person",
+      "Analytics dashboard and tiered pricing",
+    ],
+    howItRan: [
+      {
+        title: "Weeks 1–2 · Positioning",
+        body: "Positioning strategy and competitor analysis.",
+      },
+      {
+        title: "Weeks 3–8 · Site and story",
+        body: "Site development and product storytelling.",
+      },
+      {
+        title: "Weeks 9–10 · Launch",
+        body: "SEO, documentation and launch preparation.",
+      },
     ],
     featured: true,
     published: true,
     completedAt: new Date("2026-01-20"),
   },
   {
-    slug: "the-clokwork",
-    title: "Clokwork — Employee Time Tracking & Productivity",
+    slug: "clokwork",
+    title: "Clokwork",
     client: "Clokwork",
     category: "SaaS",
     excerpt:
-      "Workforce time tracking platform with desktop sync, activity analytics, and productivity dashboards.",
+      "Workforce time-tracking platform with desktop sync, activity analytics and productivity dashboards.",
     description:
-      "Clokwork (theclokwork.com) helps remote and distributed teams automate attendance, monitor active vs idle time, and generate productivity reports. We built a dark, conversion-focused SaaS marketing site around the product story — real-time dashboards, screenshot sync, role-based portals, desktop tracker downloads, and transparent pricing — so organizations can understand the value and get started quickly.",
+      "Clokwork helps remote teams automate attendance, see active versus idle time, and turn activity into productivity insight — with a marketing site that shows the dashboard early.",
     coverImage: "/portfolio/the-clokwork.jpg",
     gallery: ["/portfolio/the-clokwork-full.jpg"],
     metrics: [
       { label: "Countries", value: "35+" },
-      { label: "Tracked Hours", value: "180K+" },
-      { label: "Sync Interval", value: "30s" },
+      { label: "Hours tracked", value: "180K+" },
+      { label: "Sync interval", value: "30 sec" },
     ],
-    technologies: ["Next.js", "Desktop Tracker", "Real-time Sync", "Analytics"],
-    timeline: [
-      { phase: "Product Story", description: "Position time tracking, idle analytics, and admin portals", date: "Week 1-2" },
-      { phase: "Design & Build", description: "Hero dashboard preview, features, pricing, and downloads", date: "Week 3-8" },
-      { phase: "Launch", description: "Conversion polish, FAQ trust, and blog content paths", date: "Week 9-10" },
+    technologies: ["Next.js", "Desktop tracker", "Real-time sync", "Analytics"],
+    timeline: [],
+    tintKey: "clokwork",
+    liveUrl: "https://theclokwork.com",
+    mockup: "dash",
+    servicesLabel: "SaaS marketing website, Product positioning",
+    stackLabel: "Next.js, Desktop tracker, Real-time sync",
+    timelineLabel: "10 weeks · theclokwork.com",
+    brief:
+      "Clokwork helps remote and distributed teams automate attendance, see active versus idle time and turn activity into productivity insight. We built a dark, conversion-focused marketing site that shows the dashboard early, because buyers need to see tracked hours and live activity before they trust the pitch.",
+    builtItems: [
+      "Real-time dashboard preview in the hero",
+      "Screenshot sync that keeps working offline",
+      "Role-based portals for admins and employees",
+      "Desktop tracker downloads",
+      "Transparent pricing page",
+    ],
+    howItRan: [
+      {
+        title: "Weeks 1–2 · Product story",
+        body: "Positioning time tracking, idle analytics and admin portals.",
+      },
+      {
+        title: "Weeks 3–8 · Design and build",
+        body: "Hero dashboard, features, pricing and download pages.",
+      },
+      {
+        title: "Weeks 9–10 · Launch",
+        body: "Conversion tuning, trust-building FAQ and blog content.",
+      },
     ],
     featured: true,
     published: true,
     completedAt: new Date("2025-12-10"),
   },
   {
-    slug: "color-n-shapes",
-    title: "Color N Shape — Interactive Learning for Toddlers",
+    slug: "color-n-shape",
+    title: "Color N Shape",
     client: "Color N Shape",
-    category: "EdTech / Consumer",
+    category: "EdTech · Consumer",
     excerpt:
-      "Playful coloring and shapes web app that helps babies and toddlers learn through creativity.",
+      "An interactive drawing platform that helps young children explore shapes and colours.",
     description:
-      "Color N Shape (colornshapes.com) is a joyful learning product where toddlers explore shapes and colors through interactive drawing. We crafted a simple, bright experience with category discovery, reference-based coloring, an on-canvas palette, and parent-friendly content — designed for focus, motor skills, and early creativity in a safe digital environment.",
+      "Color N Shape is a joyful learning product where toddlers explore shapes and colours through interactive drawing — large touch targets, bright visuals, and parent-friendly content.",
     coverImage: "/portfolio/color-n-shapes.jpg",
     gallery: ["/portfolio/color-n-shapes-full.jpg"],
     metrics: [
       { label: "Audience", value: "Toddlers" },
-      { label: "Learning Focus", value: "Shapes + Color" },
-      { label: "UX Goal", value: "Simple & joyful" },
+      { label: "Learning focus", value: "Shapes + colour" },
+      { label: "UX goal", value: "Simple, joyful" },
     ],
-    technologies: ["Next.js", "Canvas", "Interactive UI", "Content CMS"],
-    timeline: [
-      { phase: "Concept", description: "Child-safe UX principles and activity flows", date: "Week 1-2" },
-      { phase: "Product Build", description: "Canvas coloring, categories, and content library", date: "Week 3-10" },
-      { phase: "Launch", description: "Parent education content and polish", date: "Week 11-12" },
+    technologies: ["Next.js", "Canvas", "Interactive UI"],
+    timeline: [],
+    tintKey: "colornshapes",
+    liveUrl: "https://colornshapes.com",
+    mockup: "canvas",
+    servicesLabel: "Web development, Interactive UI design",
+    stackLabel: "Next.js, Canvas, Interactive UI",
+    timelineLabel: "12 weeks · colornshapes.com",
+    brief:
+      "Toddler products fail when they look like adult dashboards. Color N Shape needed to feel like play: reference images, simple outlines and an inviting colour wheel, so kids practise focus and hand-eye coordination while they learn shapes and colours, in a safe space parents trust.",
+    builtItems: [
+      "Canvas colouring with an on-canvas palette",
+      "Reference-based colouring activities",
+      "Large touch targets and minimal chrome",
+      "Bright, high-contrast visuals with instant feedback",
+      "Category discovery that feels like exploring",
+      "Content written for parents",
     ],
-    featured: false,
+    howItRan: [
+      {
+        title: "Weeks 1–2 · Concept",
+        body: "Child-safe UX principles and activity-flow design.",
+      },
+      {
+        title: "Weeks 3–10 · Product build",
+        body: "Canvas colouring, categories and content library.",
+      },
+      {
+        title: "Weeks 11–12 · Launch",
+        body: "Parent-education content and final refinements.",
+      },
+    ],
+    featured: true,
     published: true,
     completedAt: new Date("2025-11-05"),
   },
@@ -445,8 +609,8 @@ export const seedCaseStudies: Omit<CaseStudy, "_id">[] = [
 export const seedTestimonials: Omit<Testimonial, "_id">[] = [
   {
     quote:
-      "Priyos Shop finally feels like a real brand online — fast, clear, and built for how our customers actually buy.",
-    author: "Operations Lead",
+      "Priyos Shop finally feels like a real brand online. Fast, clear, and built for how our customers actually buy.",
+    author: "Sharfuddin Ahmed",
     role: "Founder",
     company: "Priyos Shop",
     avatar: "",
@@ -469,6 +633,26 @@ export const seedTestimonials: Omit<Testimonial, "_id">[] = [
     author: "Growth Lead",
     role: "Founder",
     company: "MooChatAI",
+    avatar: "",
+    rating: 5,
+    published: true,
+  },
+  {
+    quote:
+      "Clokwork gives our remote teams a clear picture of activity without micromanaging. Payroll and coaching are finally grounded in data.",
+    author: "People Ops",
+    role: "Head of Operations",
+    company: "Clokwork",
+    avatar: "",
+    rating: 5,
+    published: true,
+  },
+  {
+    quote:
+      "Color N Shape feels like play, not a dashboard. Our toddlers stay engaged while exploring shapes and colours.",
+    author: "Parent",
+    role: "Early adopter",
+    company: "Color N Shape",
     avatar: "",
     rating: 5,
     published: true,
@@ -645,59 +829,108 @@ export const agencyStats = [
 
 export const processSteps = [
   {
-    title: "Discovery",
-    description: "We dive deep into your goals, users, and competitive landscape.",
+    title: "Discover",
+    description: "Your goals, users and market.",
     icon: "search",
   },
   {
-    title: "Strategy",
-    description: "Roadmap, architecture, and success metrics defined collaboratively.",
+    title: "Plan",
+    description: "Roadmap, architecture and success metrics.",
     icon: "map",
   },
   {
     title: "Design",
-    description: "Wireframes evolve into polished, tested interfaces.",
+    description: "Wireframes to tested, polished screens.",
     icon: "palette",
   },
   {
-    title: "Develop",
-    description: "Agile sprints with transparent progress and weekly demos.",
+    title: "Build",
+    description: "Sprints with a demo every week.",
     icon: "code",
   },
   {
     title: "Launch",
-    description: "Deploy, monitor, and optimize for maximum impact.",
+    description: "Deploy, monitor and keep improving.",
     icon: "rocket",
   },
 ];
 
-export const faqs = [
+export const seedFaqs: Omit<Faq, "_id">[] = [
   {
-    question: "What is your typical project timeline?",
+    group: "Working together",
+    question: "How long does a project take?",
     answer:
-      "Timelines vary by scope. Websites take 6–12 weeks, SaaS MVPs 8–16 weeks, and mobile apps 10–20 weeks. We provide detailed timelines during discovery.",
+      "It depends on the size and scope of your project. After a short discovery call, we send a clear plan with milestones, so you know what to expect before we start.",
+    order: 1,
+    published: true,
   },
   {
+    group: "Working together",
     question: "Do you work with startups?",
     answer:
-      "Yes! We've helped dozens of startups go from idea to funded product. We offer flexible engagement models including fixed-price MVPs.",
+      "Yes. We help you cut scope to what you need for launch, then grow the product with you.",
+    order: 2,
+    published: true,
   },
   {
-    question: "What technologies do you specialize in?",
+    group: "Working together",
+    question: "How do we stay in touch during the project?",
     answer:
-      "The ones that fit your problem—not our favorite logo wall. We've shipped with Next.js, React, and TypeScript; Laravel and PHP; Flutter and React Native; Go, .NET, Java, and Node; Python and WordPress; Shopify and custom stacks—plus the glue in between (PostgreSQL, MongoDB, APIs, cloud, DevOps, AI). Share your goals and constraints; we'll pick the approach that ships reliably, not the stack that wins a Twitter poll.",
+      "A shared chat channel, a live task board and a demo call every week, so you always see real progress.",
+    order: 3,
+    published: true,
   },
   {
-    question: "How do you handle project communication?",
+    group: "Working together",
+    question: "Where are you based?",
     answer:
-      "Weekly sprint demos, Slack/Teams channels, and a dedicated project manager ensure you're always in the loop.",
+      "Dhaka, Bangladesh (GMT+6). We work with clients across time zones and plan calls around your working hours.",
+    order: 4,
+    published: true,
   },
   {
-    question: "Do you offer ongoing support?",
+    group: "Pricing and ownership",
+    question: "How much does a project cost?",
     answer:
-      "Absolutely. We offer maintenance retainers, SLA-backed support, and dedicated engineering pods for long-term partnerships.",
+      "It depends on scope. After the first call we send a written quote, so you know the price before any work starts.",
+    order: 5,
+    published: true,
+  },
+  {
+    group: "Pricing and ownership",
+    question: "Who owns the code and designs?",
+    answer: "You do. Code, designs and accounts are yours from day one.",
+    order: 6,
+    published: true,
+  },
+  {
+    group: "Services",
+    question: "Which technologies do you use?",
+    answer:
+      "We choose the stack for each project. Most of our work uses modern web frameworks, mobile frameworks, e-commerce platforms and AI models.",
+    order: 7,
+    published: true,
+  },
+  {
+    group: "Services",
+    question: "Can you help secure our existing systems?",
+    answer:
+      "Yes. Our network and cybersecurity service covers security audits, hardening and ongoing monitoring for existing systems as well as new ones.",
+    order: 8,
+    published: true,
+  },
+  {
+    group: "After launch",
+    question: "Do you support the product after launch?",
+    answer:
+      "Yes. Monthly care plans cover hosting, updates, monitoring and small improvements.",
+    order: 9,
+    published: true,
   },
 ];
+
+/** @deprecated Use getFaqs() or seedFaqs — flat list for legacy homepage accordion */
+export const faqs = seedFaqs.map(({ question, answer }) => ({ question, answer }));
 
 export const teamMembers = [
   {

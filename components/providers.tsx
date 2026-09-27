@@ -17,8 +17,8 @@ export function Providers({
     <SessionProvider>
       <SiteSettingsProvider settings={siteSettings}>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
+          attribute="data-theme"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
@@ -27,11 +27,6 @@ export function Providers({
             position="top-right"
             richColors
             closeButton
-            toastOptions={{
-              classNames: {
-                toast: "glass border-border/50",
-              },
-            }}
           />
         </ThemeProvider>
       </SiteSettingsProvider>

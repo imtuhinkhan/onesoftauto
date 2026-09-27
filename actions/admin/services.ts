@@ -28,6 +28,9 @@ const serviceSchema = z.object({
   faqsJson: z.string().optional(),
   pricingTeaser: z.string().optional(),
   order: z.coerce.number().min(0),
+  group: z.string().optional(),
+  groupOrder: z.coerce.number().min(0).optional(),
+  groupDescription: z.string().optional(),
   published: z.boolean(),
 });
 
@@ -46,6 +49,12 @@ function parseServiceForm(formData: FormData) {
     faqsJson: formData.get("faqsJson"),
     pricingTeaser: String(formData.get("pricingTeaser") ?? ""),
     order: formData.get("order") ?? 0,
+    group: String(formData.get("group") ?? ""),
+    groupOrder: (() => {
+      const raw = String(formData.get("groupOrder") ?? "").trim();
+      return raw === "" ? undefined : Number(raw);
+    })(),
+    groupDescription: String(formData.get("groupDescription") ?? ""),
     published: checkboxValue(formData.get("published")),
   });
 }
@@ -63,6 +72,9 @@ function servicePayload(data: z.infer<typeof serviceSchema>) {
     faqs: parseJsonField(data.faqsJson, [] as { question: string; answer: string }[]),
     pricingTeaser: data.pricingTeaser ?? "",
     order: data.order,
+    group: data.group || undefined,
+    groupOrder: data.groupOrder,
+    groupDescription: data.groupDescription || undefined,
     published: data.published,
   };
 }

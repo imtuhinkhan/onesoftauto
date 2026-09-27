@@ -6,7 +6,8 @@ import { CaseStudy as CaseStudyModel } from "@/models/CaseStudy";
 import { Testimonial as TestimonialModel } from "@/models/Testimonial";
 import { Client as ClientModel } from "@/models/Client";
 import { Lead as LeadModel } from "@/models/Lead";
-import type { Service, BlogPost, CaseStudy, Testimonial } from "@/types";
+import { Faq as FaqModel } from "@/models/Faq";
+import type { Service, BlogPost, CaseStudy, Testimonial, Faq } from "@/types";
 import type { ClientBrand } from "@/types/client";
 
 async function tryDb<T>(fn: () => Promise<T>, fallback: () => Promise<T>): Promise<T> {
@@ -79,6 +80,19 @@ const getCachedTestimonials = unstable_cache(
   { revalidate: 60 }
 );
 
+const getCachedFaqs = unstable_cache(
+  () =>
+    tryDb(
+      async () => {
+        const docs = await FaqModel.find({ published: true }).sort("order").lean();
+        return JSON.parse(JSON.stringify(docs)) as Faq[];
+      },
+      async () => (await loadSeed()).seedFaqs as Faq[]
+    ),
+  ["faqs-published"],
+  { revalidate: 60 }
+);
+
 const getCachedClients = unstable_cache(
   () =>
     tryDb(
@@ -128,6 +142,10 @@ export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null
 
 export async function getTestimonials(): Promise<Testimonial[]> {
   return getCachedTestimonials();
+}
+
+export async function getFaqs(): Promise<Faq[]> {
+  return getCachedFaqs();
 }
 
 export async function getClients(): Promise<ClientBrand[]> {

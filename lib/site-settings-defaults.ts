@@ -7,7 +7,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   email: "hello@onesoftauto.com",
   phone: "",
   address: "Dhaka, Bangladesh",
-  calendlyUrl: "",
+  calendlyUrl: "https://calendly.com/onesoftauto/30min",
   socialLinks: [],
   stats: [],
   logoDark: BRAND.logoDark,
@@ -35,4 +35,31 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   twitterCreator: "",
   linkedinUrl: "",
   robotsIndex: true,
+  heroEyebrow: "Product studio · Dhaka",
+  heroHeadline: "We build digital products that",
+  heroHeadlineAccent: "transform businesses.",
+  heroSubcopy:
+    "From stunning websites to AI-powered SaaS platforms, we craft software that drives growth and measurable results.",
+  aboutLead:
+    "We design, build and automate digital products for founders and growing businesses,",
+  aboutLeadEm: "from the first sketch to launch and beyond.",
+  aboutPoints: [
+    {
+      title: "Based in Dhaka",
+      body: "GMT+6, working across time zones",
+    },
+    {
+      title: "Weekly demos",
+      body: "Real progress you can click, every week",
+    },
+    {
+      title: "You own everything",
+      body: "Code, designs and accounts from day one",
+    },
+  ],
+  processSubcopy: "Five stages. A working demo every week from design onward.",
+  contactHeadline: "Have a project in mind?",
+  contactSubcopy:
+    "Book a free 30-minute call or send a message. We reply within 24 hours on weekdays.",
+  whatsappUrl: "",
 };

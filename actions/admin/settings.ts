@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Settings } from "@/models/Settings";
 import { connectDB } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/admin/auth";
-import { checkboxValue, commaToArray } from "@/lib/admin/parse";
+import { checkboxValue, commaToArray, parseJsonField } from "@/lib/admin/parse";
 import type { ActionState } from "@/lib/admin/action-state";
 
 const settingsSchema = z.object({
@@ -33,6 +33,17 @@ const settingsSchema = z.object({
   twitterCreator: z.string().optional(),
   linkedinUrl: z.string().optional(),
   robotsIndex: z.boolean(),
+  heroEyebrow: z.string().optional(),
+  heroHeadline: z.string().optional(),
+  heroHeadlineAccent: z.string().optional(),
+  heroSubcopy: z.string().optional(),
+  aboutLead: z.string().optional(),
+  aboutLeadEm: z.string().optional(),
+  aboutPointsJson: z.string().optional(),
+  processSubcopy: z.string().optional(),
+  contactHeadline: z.string().optional(),
+  contactSubcopy: z.string().optional(),
+  whatsappUrl: z.string().optional(),
 });
 
 function parseSettingsForm(formData: FormData) {
@@ -60,6 +71,17 @@ function parseSettingsForm(formData: FormData) {
     twitterCreator: String(formData.get("twitterCreator") ?? ""),
     linkedinUrl: String(formData.get("linkedinUrl") ?? ""),
     robotsIndex: checkboxValue(formData.get("robotsIndex")),
+    heroEyebrow: String(formData.get("heroEyebrow") ?? ""),
+    heroHeadline: String(formData.get("heroHeadline") ?? ""),
+    heroHeadlineAccent: String(formData.get("heroHeadlineAccent") ?? ""),
+    heroSubcopy: String(formData.get("heroSubcopy") ?? ""),
+    aboutLead: String(formData.get("aboutLead") ?? ""),
+    aboutLeadEm: String(formData.get("aboutLeadEm") ?? ""),
+    aboutPointsJson: String(formData.get("aboutPointsJson") ?? ""),
+    processSubcopy: String(formData.get("processSubcopy") ?? ""),
+    contactHeadline: String(formData.get("contactHeadline") ?? ""),
+    contactSubcopy: String(formData.get("contactSubcopy") ?? ""),
+    whatsappUrl: String(formData.get("whatsappUrl") ?? ""),
   });
 }
 
@@ -103,6 +125,20 @@ export async function updateSiteSettings(
       twitterCreator: data.twitterCreator,
       linkedinUrl: data.linkedinUrl,
       robotsIndex: data.robotsIndex,
+      heroEyebrow: data.heroEyebrow,
+      heroHeadline: data.heroHeadline,
+      heroHeadlineAccent: data.heroHeadlineAccent,
+      heroSubcopy: data.heroSubcopy,
+      aboutLead: data.aboutLead,
+      aboutLeadEm: data.aboutLeadEm,
+      aboutPoints: parseJsonField(
+        data.aboutPointsJson,
+        [] as { title: string; body: string }[]
+      ),
+      processSubcopy: data.processSubcopy,
+      contactHeadline: data.contactHeadline,
+      contactSubcopy: data.contactSubcopy,
+      whatsappUrl: data.whatsappUrl,
     };
 
     await Settings.findOneAndUpdate({}, payload, { upsert: true, new: true });

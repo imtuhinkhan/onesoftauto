@@ -10,6 +10,18 @@ export interface Service {
   process: { title: string; description: string }[];
   pricingTeaser: string;
   faqs: { question: string; answer: string }[];
+  group?: string;
+  groupOrder?: number;
+  groupDescription?: string;
+  order: number;
+  published: boolean;
+}
+
+export interface Faq {
+  _id?: string;
+  group: string;
+  question: string;
+  answer: string;
   order: number;
   published: boolean;
 }
@@ -54,6 +66,15 @@ export interface CaseStudy {
     avatar?: string;
   };
   timeline: { phase: string; description: string; date: string }[];
+  tintKey?: "priyos" | "englishence" | "moochatai" | "clokwork" | "colornshapes";
+  liveUrl?: string;
+  mockup?: "shop" | "score" | "chat" | "dash" | "canvas";
+  servicesLabel?: string;
+  stackLabel?: string;
+  timelineLabel?: string;
+  brief?: string;
+  builtItems?: string[];
+  howItRan?: { title: string; body: string }[];
   featured: boolean;
   published: boolean;
   completedAt: Date | string;
@@ -130,6 +151,17 @@ export interface SiteSettings {
   twitterCreator: string;
   linkedinUrl: string;
   robotsIndex: boolean;
+  heroEyebrow?: string;
+  heroHeadline?: string;
+  heroHeadlineAccent?: string;
+  heroSubcopy?: string;
+  aboutLead?: string;
+  aboutLeadEm?: string;
+  aboutPoints?: { title: string; body: string }[];
+  processSubcopy?: string;
+  contactHeadline?: string;
+  contactSubcopy?: string;
+  whatsappUrl?: string;
 }
 
 /** @deprecated Use SiteSettings */

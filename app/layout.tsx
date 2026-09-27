@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import { Outfit, Syne } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { LayoutShell } from "@/components/layout/layout-shell";
 import { getSiteSettings } from "@/lib/site-settings";
 import { buildRootMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const display = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+  axes: ["opsz"],
+});
+
+const body = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const mono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -29,10 +35,13 @@ export default async function RootLayout({
   const settings = await getSiteSettings();
 
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body
-        className={`${outfit.variable} ${syne.variable} min-h-screen antialiased`}
-      >
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen antialiased">
         <Providers siteSettings={settings}>
           <LayoutShell>{children}</LayoutShell>
         </Providers>

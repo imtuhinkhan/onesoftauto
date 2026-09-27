@@ -4,7 +4,8 @@ import { Service as ServiceModel } from "@/models/Service";
 import { CaseStudy as CaseStudyModel } from "@/models/CaseStudy";
 import { Testimonial as TestimonialModel } from "@/models/Testimonial";
 import { Client as ClientModel } from "@/models/Client";
-import type { BlogPost, CaseStudy, Service, Testimonial } from "@/types";
+import { Faq as FaqModel } from "@/models/Faq";
+import type { BlogPost, CaseStudy, Service, Testimonial, Faq } from "@/types";
 import type { ClientBrand } from "@/types/client";
 import mongoose from "mongoose";
 
@@ -72,6 +73,19 @@ export async function getAdminTestimonialById(
   if (!mongoose.Types.ObjectId.isValid(id)) return null;
   await ensureDb();
   const doc = await TestimonialModel.findById(id).lean();
+  return doc ? serialize(doc) : null;
+}
+
+export async function getAdminFaqs(): Promise<Faq[]> {
+  await ensureDb();
+  const docs = await FaqModel.find().sort("order").lean();
+  return serialize(docs);
+}
+
+export async function getAdminFaqById(id: string): Promise<Faq | null> {
+  if (!mongoose.Types.ObjectId.isValid(id)) return null;
+  await ensureDb();
+  const doc = await FaqModel.findById(id).lean();
   return doc ? serialize(doc) : null;
 }
 

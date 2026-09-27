@@ -62,6 +62,80 @@ export function SettingsForm({ action, settings }: SettingsFormProps) {
             </div>
           </FormSection>
 
+          <FormSection title="Homepage (V2)">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="heroEyebrow">Hero eyebrow</Label>
+                <Input id="heroEyebrow" name="heroEyebrow" defaultValue={settings.heroEyebrow} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="heroHeadline">Hero headline</Label>
+                <Input id="heroHeadline" name="heroHeadline" defaultValue={settings.heroHeadline} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="heroHeadlineAccent">Hero headline accent</Label>
+                <Input
+                  id="heroHeadlineAccent"
+                  name="heroHeadlineAccent"
+                  defaultValue={settings.heroHeadlineAccent}
+                />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="heroSubcopy">Hero subcopy</Label>
+                <Textarea id="heroSubcopy" name="heroSubcopy" rows={2} defaultValue={settings.heroSubcopy} />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="aboutLead">About lead</Label>
+                <Textarea id="aboutLead" name="aboutLead" rows={2} defaultValue={settings.aboutLead} />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="aboutLeadEm">About lead emphasis</Label>
+                <Input id="aboutLeadEm" name="aboutLeadEm" defaultValue={settings.aboutLeadEm} />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="aboutPointsJson">About points (JSON)</Label>
+                <Textarea
+                  id="aboutPointsJson"
+                  name="aboutPointsJson"
+                  rows={4}
+                  className="font-mono text-xs"
+                  defaultValue={JSON.stringify(settings.aboutPoints ?? [], null, 2)}
+                />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="processSubcopy">Process subcopy</Label>
+                <Input id="processSubcopy" name="processSubcopy" defaultValue={settings.processSubcopy} />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="contactHeadline">Contact headline</Label>
+                <Input id="contactHeadline" name="contactHeadline" defaultValue={settings.contactHeadline} />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="contactSubcopy">Contact subcopy</Label>
+                <Textarea
+                  id="contactSubcopy"
+                  name="contactSubcopy"
+                  rows={2}
+                  defaultValue={settings.contactSubcopy}
+                />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="whatsappUrl">WhatsApp URL</Label>
+                <Input
+                  id="whatsappUrl"
+                  name="whatsappUrl"
+                  type="url"
+                  defaultValue={settings.whatsappUrl}
+                  placeholder="https://wa.me/…"
+                />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="calendlyUrl">Calendly URL</Label>
+                <Input id="calendlyUrl" name="calendlyUrl" defaultValue={settings.calendlyUrl} />
+              </div>
+            </div>
+          </FormSection>
+
           <FormSection title="Branding">
             <p className="text-xs text-muted-foreground -mt-2 mb-2">
               Use paths like /logo/logo-dark.png or full https:// URLs.

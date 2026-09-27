@@ -1,5 +1,7 @@
 @import "tailwindcss";
+@import "./design-system.css";
 
+/* Admin / shadcn tokens (class-based .dark) — marketing uses data-theme + design-system */
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -9,54 +11,44 @@
   --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
-  --primary: 187 100% 42%;
+  --primary: 226 100% 57%;
   --primary-foreground: 0 0% 100%;
   --secondary: 210 40% 96%;
   --secondary-foreground: 222 47% 11%;
   --muted: 210 40% 96%;
   --muted-foreground: 215 16% 47%;
-  --accent: 252 91% 60%;
+  --accent: 226 100% 57%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 187 100% 42%;
+  --ring: 226 100% 57%;
   --radius: 0.75rem;
   --success: 160 84% 39%;
-  --gradient-start: #00a8cc;
-  --gradient-mid: #1e293b;
-  --gradient-end: #7a5af8;
-  --glow-cyan: 187 100% 50%;
-  --glow-purple: 252 91% 66%;
 }
 
 .dark {
-  --background: 0 0% 2%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 7%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 187 100% 50%;
-  --primary-foreground: 0 0% 2%;
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 62%;
-  --accent: 252 91% 66%;
-  --accent-foreground: 0 0% 98%;
+  --background: 220 47% 5%;
+  --foreground: 214 33% 94%;
+  --card: 220 35% 10%;
+  --card-foreground: 214 33% 94%;
+  --popover: 220 35% 10%;
+  --popover-foreground: 214 33% 94%;
+  --primary: 221 100% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 30% 14%;
+  --secondary-foreground: 214 33% 94%;
+  --muted: 220 30% 14%;
+  --muted-foreground: 218 14% 62%;
+  --accent: 221 100% 62%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 62% 50%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 16%;
-  --input: 0 0% 14%;
-  --ring: 187 100% 50%;
+  --border: 218 30% 18%;
+  --input: 218 30% 16%;
+  --ring: 221 100% 62%;
   --success: 160 84% 39%;
-  --gradient-start: #00d2ff;
-  --gradient-mid: #ffffff;
-  --gradient-end: #b794f4;
-  --glow-cyan: 187 100% 50%;
-  --glow-purple: 252 91% 66%;
 }
 
 @theme inline {
@@ -84,300 +76,18 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: var(--font-outfit), system-ui, sans-serif;
-  --font-display: var(--font-syne), system-ui, sans-serif;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif;
 }
 
-* {
-  border-color: hsl(var(--border));
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
+/* Marketing site body uses design-system; admin routes add .admin-app */
+.admin-app {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-sans);
+  font-family: var(--font-geist), system-ui, sans-serif;
+  padding-inline: 0;
 }
 
-.dark body {
-  background-color: #050505;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 0% 0%, hsl(var(--glow-cyan) / 0.12), transparent 50%),
-    radial-gradient(ellipse 70% 50% at 100% 100%, hsl(var(--glow-purple) / 0.14), transparent 50%),
-    linear-gradient(hsl(0 0% 100% / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(0 0% 100% / 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
-  background-position: 0 0, 0 0, center, center;
-}
-
-.font-display {
-  font-family: var(--font-display);
-}
-
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    var(--gradient-start) 0%,
-    var(--gradient-mid) 45%,
-    var(--gradient-end) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.brand-gradient-bg {
-  background: linear-gradient(135deg, #00d2ff 0%, #7a5af8 100%);
-}
-
-.brand-gradient-bg-soft {
-  background: linear-gradient(
-    135deg,
-    hsl(var(--glow-cyan) / 0.15) 0%,
-    hsl(var(--glow-purple) / 0.15) 100%
-  );
-}
-
-.glass {
-  background: hsl(0 0% 100% / 0.05);
-  backdrop-filter: blur(16px);
-  border: 1px solid hsl(0 0% 100% / 0.08);
-}
-
-:root:not(.dark) .glass {
-  background: hsl(var(--card) / 0.85);
-  border: 1px solid hsl(var(--border) / 0.6);
-}
-
-.gradient-border {
-  position: relative;
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.section-padding {
-  @apply px-4 sm:px-6 lg:px-8 py-14 lg:py-20;
-}
-
-.page-hero-offset {
-  @apply pt-20 lg:pt-24;
-}
-
-.section-padding-tight-top {
-  @apply pt-8 lg:pt-12;
-}
-
-.section-padding-hero {
-  @apply px-4 sm:px-6 lg:px-8 pb-4 lg:pb-6;
-}
-
-.section-padding-hero-nav {
-  @apply pt-24 lg:pt-28;
-}
-
-.home-section {
-  @apply px-4 sm:px-6 lg:px-8 py-4 lg:py-6;
-}
-
-.home-section-alt {
-  @apply bg-card/40;
-}
-
-.container-custom {
-  @apply mx-auto max-w-7xl w-full;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes clients-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-clients-marquee {
-  animation: clients-marquee 40s linear infinite;
-}
-
-.client-logo-mono {
-  height: 2.25rem;
-  width: auto;
-  max-width: 10rem;
-  object-fit: contain;
-  opacity: 0.4;
-  filter: grayscale(100%);
-  transition: opacity 0.3s ease;
-}
-
-.dark .client-logo-mono {
-  filter: grayscale(100%) brightness(0) invert(1);
-}
-
-:root:not(.dark) .client-logo-mono {
-  filter: grayscale(100%) brightness(0);
-  opacity: 0.45;
-}
-
-.client-logo-mono:hover {
-  opacity: 0.85;
-}
-
-/* Blog article body — no Tailwind Typography plugin in this project */
-.blog-content {
-  color: hsl(var(--muted-foreground));
-  font-size: 1.0625rem;
-  line-height: 1.8;
-}
-
-.blog-content > * + * {
-  margin-top: 1.25em;
-}
-
-.blog-content h2,
-.blog-content h3,
-.blog-content h4 {
-  color: hsl(var(--foreground));
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-
-.blog-content h2 {
-  margin-top: 2.25em;
-  margin-bottom: 0.75em;
-  font-size: 1.5rem;
-}
-
-.blog-content h3 {
-  margin-top: 1.75em;
-  margin-bottom: 0.5em;
-  font-size: 1.25rem;
-}
-
-.blog-content p {
-  margin-top: 1.1em;
-}
-
-.blog-content a {
-  color: hsl(var(--primary));
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 500;
-}
-
-.blog-content a:hover {
-  opacity: 0.85;
-}
-
-.blog-content ul,
-.blog-content ol {
-  margin-top: 1em;
-  padding-left: 1.35em;
-}
-
-.blog-content ul {
-  list-style: disc;
-}
-
-.blog-content ol {
-  list-style: decimal;
-}
-
-.blog-content li {
-  margin-top: 0.45em;
-  padding-left: 0.25em;
-}
-
-.blog-content li::marker {
-  color: hsl(var(--primary));
-}
-
-.blog-content strong {
-  color: hsl(var(--foreground));
-  font-weight: 600;
-}
-
-.blog-content blockquote {
-  margin-top: 1.5em;
-  border-left: 3px solid hsl(var(--primary));
-  padding-left: 1rem;
-  color: hsl(var(--foreground));
-  font-style: italic;
-}
-
-.blog-content img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-top: 1.75em;
-  margin-bottom: 1.75em;
-  border-radius: 1rem;
-  border: 1px solid hsl(var(--border) / 0.7);
-  box-shadow: 0 12px 40px hsl(0 0% 0% / 0.12);
-}
-
-.blog-content figure {
-  margin-top: 1.75em;
-  margin-bottom: 1.75em;
-}
-
-.blog-content figure img {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.blog-content figcaption {
-  margin-top: 0.75em;
-  text-align: center;
-  font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
-}
-
-.blog-content hr {
-  margin: 2.5em 0;
-  border: 0;
-  border-top: 1px solid hsl(var(--border) / 0.7);
-}
-
-.blog-content code {
-  border-radius: 0.35rem;
-  background: hsl(var(--muted));
-  padding: 0.15em 0.4em;
-  font-size: 0.9em;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-clients-marquee {
-    animation: none;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-    padding-inline: 1rem;
-  }
+.admin-app * {
+  border-color: hsl(var(--border));
 }

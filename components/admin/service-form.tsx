@@ -46,6 +46,28 @@ export function ServiceForm({ action, service }: ServiceFormProps) {
               <Label htmlFor="order">Display order</Label>
               <Input id="order" name="order" type="number" min={0} defaultValue={service?.order ?? 0} />
             </div>
+            <div className="space-y-2">
+              <Label htmlFor="group">Discipline group</Label>
+              <Input id="group" name="group" defaultValue={service?.group} placeholder="Web & design" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="groupOrder">Group order</Label>
+              <Input
+                id="groupOrder"
+                name="groupOrder"
+                type="number"
+                min={0}
+                defaultValue={service?.groupOrder ?? ""}
+              />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="groupDescription">Group description</Label>
+              <Input
+                id="groupDescription"
+                name="groupDescription"
+                defaultValue={service?.groupDescription}
+              />
+            </div>
           </div>
 
           <div className="space-y-2">

@@ -18,6 +18,9 @@ function mergeSettings(doc: Partial<SiteSettings> | null): SiteSettings {
       : DEFAULT_SITE_SETTINGS.metaKeywords,
     socialLinks: doc.socialLinks ?? DEFAULT_SITE_SETTINGS.socialLinks,
     stats: doc.stats ?? DEFAULT_SITE_SETTINGS.stats,
+    aboutPoints: doc.aboutPoints?.length
+      ? doc.aboutPoints
+      : DEFAULT_SITE_SETTINGS.aboutPoints,
   };
 }
 

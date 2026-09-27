@@ -27,9 +27,11 @@ async function seed() {
     seedBlogs,
     seedCaseStudies,
     seedTestimonials,
+    seedFaqs,
     clientLogos,
     agencyStats,
   } = await import("../lib/data/seed");
+  const { Faq } = await import("../models/Faq");
 
   await Promise.all([
     User.deleteMany({}),
@@ -38,6 +40,7 @@ async function seed() {
     CaseStudy.deleteMany({}),
     Testimonial.deleteMany({}),
     Client.deleteMany({}),
+    Faq.deleteMany({}),
     Settings.deleteMany({}),
   ]);
 
@@ -56,6 +59,7 @@ async function seed() {
   await Blog.insertMany(seedBlogs);
   await CaseStudy.insertMany(seedCaseStudies);
   await Testimonial.insertMany(seedTestimonials);
+  await Faq.insertMany(seedFaqs);
   await Client.insertMany(
     clientLogos.map((c, i) => ({
       name: c.name,
